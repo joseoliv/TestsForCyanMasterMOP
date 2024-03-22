@@ -1,0 +1,4 @@
+program at "C:\Dropbox\Cyan\cyanTests\masterMOP"
+
+    package grammar at "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar"
+    package main at "C:\Dropbox\Cyan\cyanTests\masterMOP\main"
