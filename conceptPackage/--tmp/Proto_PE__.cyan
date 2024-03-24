@@ -1,7 +1,0 @@
-package conceptPackage
-
-
-
-object Proto_PE__ implements PE
-
-end

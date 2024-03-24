@@ -1,7 +1,0 @@
-package other
-
-
-
-object Proto_IOther__ implements IOther
-
-end

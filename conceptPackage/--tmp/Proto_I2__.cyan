@@ -1,7 +1,0 @@
-package conceptPackage
-
-
-
-object Proto_I2__ implements I2
-
-end
