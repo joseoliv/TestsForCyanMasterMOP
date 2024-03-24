@@ -1,5 +1,6 @@
 package main
 
+<<<<<<< HEAD
 import cyan.util
 import grammar
 
@@ -427,3 +428,14 @@ end
 
 
 
+=======
+
+object Program
+
+    func run {
+        "Change main.Program to call the run methods" println;
+        metaobjectTest.Program() run
+    }
+    
+end
+>>>>>>> f9511e622c9a0a82b825c18284a930695eb066ef

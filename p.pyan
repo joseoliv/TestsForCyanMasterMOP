@@ -3,6 +3,7 @@
          -java
 */
 
+<<<<<<< HEAD
 @annot("This is the program")
 @feature("option", "debug")
 @feature("option", "optimize")
@@ -24,3 +25,26 @@ program
     
     @feature(communicateInPackage, on)
     package main 
+=======
+@setVariable(debug, "yes")
+@setVariable(author, "Jose") 
+   /*  Because of this association, prototype  'TaintedToUntainted'
+       of package 'untainted' can cast expressions of type 
+       T@tainted to T@untainted in which T is any type.
+   */
+@addToSet(untaintedDoNotCheckIn, "untainted.TaintedToUntainted")
+program
+
+    main metaobjectTest.Program
+    package cyan.math 
+    package cyan.io   
+    
+    @setVariable(test, create)
+    @setVariable(goal, "Test all metaobjects")
+    package metaobjectTest
+    
+    @addToSet(overrideTest, SubOverrideTest)
+    package main
+
+    
+>>>>>>> f9511e622c9a0a82b825c18284a930695eb066ef
