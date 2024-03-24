@@ -236,7 +236,6 @@ object Program
     
     
     func functionTest {
-        /*
         let Array<String> strArray = Array<String>();
         let Function<String, Nil> addMethod = 
            strArray functionForMethod: "add:1";
@@ -245,7 +244,6 @@ object Program
         assert strArray size == 2;
         assert strArray[0] == "A" &&
                strArray[1] == "B";
-        */
         
         var helpItem = MenuItem new;
         helpItem onMouseClick: (Help functionForMethod: "show" );

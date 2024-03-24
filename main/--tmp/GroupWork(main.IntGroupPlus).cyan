@@ -1,0 +1,86 @@
+package main
+
+@concept{*
+    main.IntGroupPlus has [ func * (main.IntGroupPlus other) -> main.IntGroupPlus
+            func unit -> main.IntGroupPlus
+            func inverse -> main.IntGroupPlus ],
+        "main.IntGroupPlus should have methods *, unit, and inverse in order to be considered element of a Group",
+        
+    axiom opTest: main.IntGroupPlus a, main.IntGroupPlus b, main.IntGroupPlus c {%
+
+        if (a * (b * c) != (a * b) * c) ||
+           (c * (b * a) != (c * b) * a {
+            ^"main.IntGroupPlus is not associative"
+        }
+        ^Nil
+    %},
+
+    axiom unitTest: main.IntGroupPlus a, main.IntGroupPlus b, main.IntGroupPlus c {%
+
+        if (a * a unit != a unit * a) ||
+           (b * a unit != b unit * b) ||
+           (a unit * b unit != c unit * c unit) {
+            ^"The unit element of main.IntGroupPlus is not an identity"
+        }
+        ^Nil
+    %},
+
+    axiom inverseTest: main.IntGroupPlus a, main.IntGroupPlus b, main.IntGroupPlus c {%
+
+        if (a * a inverse != b unit) ||
+           (a unit != b inverse * b) ||
+           (c inverse * c != main.IntGroupPlus unit) {
+            ^"The inverse operation is not working properly"
+        }
+        ^Nil
+    %}
+
+
+*}
+ 
+object GroupWork<main.IntGroupPlus> 
+
+    func work: (main.IntGroupPlus a, main.IntGroupPlus b, main.IntGroupPlus c)   {
+        assert (a inverse * a ) asInt == 0;
+        ; 
+        assert (a * a inverse) asInt == 0;
+        ; 
+        assert (a unit * b) == b && (a unit * b unit * c unit) == a unit;
+        ; 
+        assert ((c inverse * b inverse * a inverse) * a * b * c) asInt == 0;
+        ; 
+        assert ((c inverse * b inverse * a inverse) * a * b * c) == a unit;
+        ; 
+        assert ((c inverse * b inverse * a inverse) * a * b * c) asInt == 0;
+        ; 
+        assert ((c inverse * b inverse * a inverse) * a * b * c) == a unit;
+        /*
+        printexpr a asInt;
+        printexpr a inverse asInt;
+        printexpr a unit asInt;
+        printexpr (a * a inverse) asInt;
+        printexpr (a * a unit) asInt;
+        printexpr ((b inverse * a inverse) * a * b) asInt;
+        printexpr ((c inverse * b inverse * a inverse) * a * b * c) asInt;
+
+        printexpr (b inverse * b) asInt;
+        printexpr (c * b * a * ( a inverse * b inverse * c inverse )) asInt;
+        */
+    
+    } 
+
+    func workout: (main.IntGroupPlus a, main.IntGroupPlus b, main.IntGroupPlus c)   {
+        let tunit = main.IntGroupPlus unit; 
+        assert c * b * a * ( a inverse * b inverse * c inverse ) == tunit;
+        ; 
+        assert a*(b*c) == (a*b)*c;
+        ; 
+        assert c*(b*a) == (c*b)*a;
+
+        
+    
+    } 
+
+
+end
+

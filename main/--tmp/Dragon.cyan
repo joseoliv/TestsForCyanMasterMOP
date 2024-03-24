@@ -1,0 +1,5 @@
+package main
+object Dragon
+    func get -> Int { return 0 }
+
+end

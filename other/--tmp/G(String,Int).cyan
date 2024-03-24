@@ -1,0 +1,13 @@
+package other
+
+
+object G<String, Int> 
+
+    func teste  {
+        var String r = "error"; 
+        var Int s = 0
+    } 
+
+
+end
+

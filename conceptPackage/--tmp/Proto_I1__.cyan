@@ -1,0 +1,7 @@
+package conceptPackage
+
+
+
+object Proto_I1__ implements I1
+
+end

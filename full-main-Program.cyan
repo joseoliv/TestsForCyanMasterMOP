@@ -1,0 +1,1485 @@
+package main
+
+import cyan.util
+import grammar
+
+@checkStyle
+object Program 
+
+    func init {
+        age = 11;
+        monthDay = 14;
+        _name = "Newton";
+        _college = "Cambridge";
+    }
+
+
+
+    func run {
+
+
+        let ln00 = @lineNumber#parsing @pushCompilationContext(parsing11, "lineNumber", "main", "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 21) 21 @popCompilationContext(parsing11, "cyan.lang", "Int") ;
+          @pushCompilationContextStatement(atisemAn_id_153, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 22) 
+         if !(true) {
+                  "Assert failed in line 22 of prototype 'main.Program'" println;
+                  "Assert expression: 'true'" println;
+                  };
+ @popCompilationContext(atisemAn_id_153) 
+ 
+        let ln11 = @lineNumber#parsing @pushCompilationContext(parsing12, "lineNumber", "main", "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 23) 23 @popCompilationContext(parsing12, "cyan.lang", "Int") ;
+        let ln22 = @lineNumber#parsing @pushCompilationContext(parsing13, "lineNumber", "main", "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 24) 24 @popCompilationContext(parsing13, "cyan.lang", "Int") ;
+          @pushCompilationContextStatement(atisemAn_id_154, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 25) 
+         if !(ln11 == ln00 + 2) {
+                  "Assert failed in line 25 of prototype 'main.Program'" println;
+                  "Assert expression: 'ln11 == ln00 + 2'" println;
+                  "'ln11' = " print;
+                  ln11 println;
+                  };
+ @popCompilationContext(atisemAn_id_154) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_155, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 26) 
+         if !(ln22 == ln11 + 1) {
+                  "Assert failed in line 26 of prototype 'main.Program'" println;
+                  "Assert expression: 'ln22 == ln11 + 1'" println;
+                  "'ln22' = " print;
+                  ln22 println;
+                  };
+ @popCompilationContext(atisemAn_id_155) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_156, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 27) 
+         if !(ln00 == ln11 - 2) {
+                  "Assert failed in line 27 of prototype 'main.Program'" println;
+                  "Assert expression: 'ln00 == ln11 - 2'" println;
+                  "'ln00' = " print;
+                  ln00 println;
+                  };
+ @popCompilationContext(atisemAn_id_156) 
+ 
+
+        let ln0 = @compilationInfo#parsing("linenumber") @pushCompilationContext(parsing14, "compilationInfo", "main", "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 29) 29 @popCompilationContext(parsing14, "cyan.lang", "Int") ;
+        let ln1 = @compilationInfo#parsing("linenumber") @pushCompilationContext(parsing15, "compilationInfo", "main", "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 30) 30 @popCompilationContext(parsing15, "cyan.lang", "Int") ;
+        let ln2 = @compilationInfo#parsing("linenumber") @pushCompilationContext(parsing16, "compilationInfo", "main", "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 31) 31 @popCompilationContext(parsing16, "cyan.lang", "Int") ;
+          @pushCompilationContextStatement(atisemAn_id_157, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 32) 
+         if !(ln1 == ln0 + 1) {
+                  "Assert failed in line 32 of prototype 'main.Program'" println;
+                  "Assert expression: 'ln1 == ln0 + 1'" println;
+                  "'ln1' = " print;
+                  ln1 println;
+                  };
+ @popCompilationContext(atisemAn_id_157) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_158, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 33) 
+         if !(ln2 == ln1 + 1) {
+                  "Assert failed in line 33 of prototype 'main.Program'" println;
+                  "Assert expression: 'ln2 == ln1 + 1'" println;
+                  "'ln2' = " print;
+                  ln2 println;
+                  };
+ @popCompilationContext(atisemAn_id_158) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_159, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 34) 
+         if !(ln0 == ln1 - 1) {
+                  "Assert failed in line 34 of prototype 'main.Program'" println;
+                  "Assert expression: 'ln0 == ln1 - 1'" println;
+                  "'ln0' = " print;
+                  ln0 println;
+                  };
+ @popCompilationContext(atisemAn_id_159) 
+ 
+        if @compilationInfo#parsing("linenumber") @pushCompilationContext(parsing17, "compilationInfo", "main", "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 35) 35 @popCompilationContext(parsing17, "cyan.lang", "Int") -@compilationInfo#parsing("linenumber") @pushCompilationContext(parsing18, "compilationInfo", "main", "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 35) 35 @popCompilationContext(parsing18, "cyan.lang", "Int")  != 0 {
+            var lineN = @lineNumber#parsing @pushCompilationContext(parsing19, "lineNumber", "main", "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 36) 36 @popCompilationContext(parsing19, "cyan.lang", "Int") -1;
+            "assert failed in line $lineN of 'Program'" println;
+        }
+
+        if @compilationInfo#parsing("linenumber") @pushCompilationContext(parsing20, "compilationInfo", "main", "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 40) 40 @popCompilationContext(parsing20, "cyan.lang", "Int") *@lineNumber#parsing @pushCompilationContext(parsing21, "lineNumber", "main", "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 40) 40 @popCompilationContext(parsing21, "cyan.lang", "Int")  < 0 {
+            var lineN = @lineNumber#parsing @pushCompilationContext(parsing22, "lineNumber", "main", "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 41) 41 @popCompilationContext(parsing22, "cyan.lang", "Int") -1;
+            "assert failed in line $lineN of 'Program'" println;
+        }
+
+        /* printexpr Program one;
+        printexpr Program two;
+        printexpr Program three;  */
+        
+    
+        var Strange<ProtoT, ProtoR> strange;
+        var Tuple<name, String, age, Int> .# writeCode livia, carol;
+        var Tuple<f1, String, f2, Int> ttt = 
+            [. f1 = "Carol", f2 = 7 .];
+          @pushCompilationContextStatement(atisemAn_id_162, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 54) 
+         if !(ttt f1 == "Carol") {
+                  "Assert failed in line 54 of prototype 'main.Program'" println;
+                  "Assert expression: 'ttt f1 == \"Carol\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_162) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_163, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 55) 
+         if !(ttt f2 == 7) {
+                  "Assert failed in line 55 of prototype 'main.Program'" println;
+                  "Assert expression: 'ttt f2 == 7'" println;
+                  };
+ @popCompilationContext(atisemAn_id_163) 
+ 
+
+        var s100 = Store<int_100>();
+        var Boolean err = true;
+        {
+            s100 set: 99;
+            s100 set: 100;
+            err = false;
+        } hideException;
+          @pushCompilationContextStatement(atisemAn_id_164, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 64) 
+         if !(!err) {
+                  "Assert failed in line 64 of prototype 'main.Program'" println;
+                  "Assert expression: '!err'" println;
+                  };
+ @popCompilationContext(atisemAn_id_164) 
+ 
+        err = false;        
+        {
+            s100 set: 101;
+            err = true;
+        } hideException;
+          @pushCompilationContextStatement(atisemAn_id_165, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 70) 
+         if !(!err) {
+                  "Assert failed in line 70 of prototype 'main.Program'" println;
+                  "Assert expression: '!err'" println;
+                  };
+ @popCompilationContext(atisemAn_id_165) 
+ 
+
+        GrammarTest() run;
+        
+        functionTest;
+        grammarTest;
+        getSetTest;
+        conceptTest;
+        createPrototypeTest;
+        addMethodsToArrayTest;
+    
+        let n00 =   @pushCompilationContext(atisemAn_id_166, "number(base, BASE, Base)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 81) 65535 @popCompilationContext(atisemAn_id_166, "cyan.lang", "Int") 
+ ;
+          @pushCompilationContextStatement(atisemAn_id_167, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 82) 
+         if !(n00 == 65535) {
+                  "Assert failed in line 82 of prototype 'main.Program'" println;
+                  "Assert expression: 'n00 == 65535'" println;
+                  "'n00' = " print;
+                  n00 println;
+                  };
+ @popCompilationContext(atisemAn_id_167) 
+ 
+        let b00 =   @pushCompilationContext(atisemAn_id_168, "number(bin, Bin, BIN)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 83) 21 @popCompilationContext(atisemAn_id_168, "cyan.lang", "Int") 
+ ;
+          @pushCompilationContextStatement(atisemAn_id_169, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 84) 
+         if !(b00 == 21) {
+                  "Assert failed in line 84 of prototype 'main.Program'" println;
+                  "Assert expression: 'b00 == 21'" println;
+                  "'b00' = " print;
+                  b00 println;
+                  };
+ @popCompilationContext(atisemAn_id_169) 
+ 
+        // 255_255_255_47IP println;
+    
+        /*
+        let pf0 = @packageFeature("cyan.util") asString;
+        assert pf0 == "[ [. key = annot, value = This is cyan.util .], [. key = poption, value = package debug .], [. key = poption, value = [ optimize, very, much ] .], [. key = annot, value = [ [. f1 = masterMOP, f2 = MOP master, f3 = 12345 .] ] .], [. key = pname, value = [ [ 0, 1 ], [ 2, 3 ] ] .] ]";
+        
+        pf0 println;
+        ("*" * 20) println;
+        @packageFeature("cyan.util", "poption") println;
+        ("*" * 20) println;
+        @packageFeature("cyan.util", "pname") println;
+        ("*" * 20) println;
+        @packageFeature("cyan.util", "") println;
+        ("*" * 20) println;
+        */
+        
+          @pushCompilationContextStatement(atisemAn_id_170, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 101) 
+         if !("C:\\Dropbox\\Cyan ###" == "C:" ++ '\\' ++ "Dropbox" ++ '\\' ++ "Cyan ###") {
+                  "Assert failed in line 101 of prototype 'main.Program'" println;
+                  "Assert expression: '\"C:\\\\Dropbox\\\\Cyan ###\" == \"C:\" ++ \'\\\\\' ++ \"Dropbox\" ++ \'\\\\\' ++ \"Cyan ###\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_170) 
+ 
+         @markDeletedCode(1)   @pushCompilationContextStatement(atisemAn_id_171, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 102) 
+         if !("\\n $ \b\t $ \\t  ###" == '\\' ++ 'n' ++ " $ " ++ '\b' ++ '\t' ++ " $ " ++ '\\' ++ 't' ++ "  ###") {
+                  "Assert failed in line 102 of prototype 'main.Program'" println;
+                  "Assert expression: '\"\\\\n $ \\b\\t $ \\\\t  ###\" == \'\\\\\' ++ \'n\' ++ \" $ \" ++ \'\\b\' ++ \'\\t\' ++ \" $ \" ++ \'\\\\\' ++ \'t\' ++ \"  ###\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_171) 
+ 
+         @markDeletedCode(1)   @pushCompilationContextStatement(atisemAn_id_172, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 104) 
+         if !("\\n $ \b\t $ \\t  ###" != "\\n $ " ++ '\\' ++ "b\t $ \\t  ###") {
+                  "Assert failed in line 104 of prototype 'main.Program'" println;
+                  "Assert expression: '\"\\\\n $ \\b\\t $ \\\\t  ###\" != \"\\\\n $ \" ++ \'\\\\\' ++ \"b\\t $ \\\\t  ###\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_172) 
+ 
+
+
+
+        let fn = @compilationInfo#parsing(filename) @pushCompilationContext(parsing23, "compilationInfo", "main", "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 109) "C:\\Dropbox\\Cyan\\cyanTests\\masterMOP\\main\\Program.cyan" @popCompilationContext(parsing23, "cyan.lang", "String") ;
+          @pushCompilationContextStatement(atisemAn_id_173, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 110) 
+         if !(fn == "C:\\Dropbox\\Cyan\\cyanTests\\masterMOP\\main\\Program.cyan") {
+                  "Assert failed in line 110 of prototype 'main.Program'" println;
+                  "Assert expression: 'fn == \"C:\\\\Dropbox\\\\Cyan\\\\cyanTests\\\\masterMOP\\\\main\\\\Program.cyan\"'" println;
+                  "'fn' = " print;
+                  fn println;
+                  };
+ @popCompilationContext(atisemAn_id_173) 
+ 
+
+        let t0 = @compilationInfo#parsing(filename) @pushCompilationContext(parsing24, "compilationInfo", "main", "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 112) "C:\\Dropbox\\Cyan\\cyanTests\\masterMOP\\main\\Program.cyan" @popCompilationContext(parsing24, "cyan.lang", "String")  ++ " filename ";
+          @pushCompilationContextStatement(atisemAn_id_174, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 113) 
+         if !(t0 == "C:\\Dropbox\\Cyan\\cyanTests\\masterMOP\\main\\Program.cyan filename ") {
+                  "Assert failed in line 113 of prototype 'main.Program'" println;
+                  "Assert expression: 't0 == \"C:\\\\Dropbox\\\\Cyan\\\\cyanTests\\\\masterMOP\\\\main\\\\Program.cyan filename \"'" println;
+                  "'t0' = " print;
+                  t0 println;
+                  };
+ @popCompilationContext(atisemAn_id_174) 
+ 
+
+
+        var Int n = 0;
+        let okbin =   @pushCompilationContext(atisemAn_id_175, "number(bin, Bin, BIN)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 117) 5 @popCompilationContext(atisemAn_id_175, "cyan.lang", "Int") 
+ ;
+          @pushCompilationContextStatement(atisemAn_id_178, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 118) 
+         if !(okbin == 5 &&   @pushCompilationContext(atisemAn_id_176, "number(bin, Bin, BIN)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 118) 7 @popCompilationContext(atisemAn_id_176, "cyan.lang", "Int") 
+  == 7 &&   @pushCompilationContext(atisemAn_id_177, "number(base, BASE, Base)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 118) 65535 @popCompilationContext(atisemAn_id_177, "cyan.lang", "Int") 
+  == 65535) {
+                  "Assert failed in line 118 of prototype 'main.Program'" println;
+                  "Assert expression: 'okbin == 5 &&   @pushCompilationContext(atisemAn_id_176, \"number(bin, Bin, BIN)\", main, \"C:\\Dropbox\\Cyan\\cyanTests\\masterMOP\\main\\Program.cyan\", 118) 7 @popCompilationContext(atisemAn_id_176, \"cyan.lang\", \"Int\") \n  == 7 &&   @pushCompilationContext(atisemAn_id_177, \"number(base, BASE, Base)\", main, \"C:\\Dropbox\\Cyan\\cyanTests\\masterMOP\\main\\Program.cyan\", 118) 65535 @popCompilationContext(atisemAn_id_177, \"cyan.lang\", \"Int\") \n  == 65535'" println;
+                  };
+ @popCompilationContext(atisemAn_id_178) 
+ 
+        
+        
+        let text = "aab";
+        let okre = !(text ~=   @pushCompilationContext(atisemAn_id_179, "string(r, R)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 122) RegExpr("[ab]a") @popCompilationContext(atisemAn_id_179, "cyan.lang", "RegExpr") 
+ );
+          @pushCompilationContextStatement(atisemAn_id_180, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 123) 
+         if !(okre) {
+                  "Assert failed in line 123 of prototype 'main.Program'" println;
+                  "Assert expression: 'okre'" println;
+                  };
+ @popCompilationContext(atisemAn_id_180) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_182, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 124) 
+         if !(!(text ~=   @pushCompilationContext(atisemAn_id_181, "string(r, R)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 124) RegExpr("[ab]a") @popCompilationContext(atisemAn_id_181, "cyan.lang", "RegExpr") 
+ )) {
+                  "Assert failed in line 124 of prototype 'main.Program'" println;
+                  "Assert expression: '!(text ~=   @pushCompilationContext(atisemAn_id_181, \"string(r, R)\", main, \"C:\\Dropbox\\Cyan\\cyanTests\\masterMOP\\main\\Program.cyan\", 124) RegExpr(\"[ab]a\") @popCompilationContext(atisemAn_id_181, \"cyan.lang\", \"RegExpr\") \n )'" println;
+                  };
+ @popCompilationContext(atisemAn_id_182) 
+ 
+           
+          @pushCompilationContextStatement(atisemAn_id_184, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 126) 
+         if !(text ~=   @pushCompilationContext(atisemAn_id_183, "string(r, R)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 126) RegExpr("a*b") @popCompilationContext(atisemAn_id_183, "cyan.lang", "RegExpr") 
+ ) {
+                  "Assert failed in line 126 of prototype 'main.Program'" println;
+                  "Assert expression: 'text ~=   @pushCompilationContext(atisemAn_id_183, \"string(r, R)\", main, \"C:\\Dropbox\\Cyan\\cyanTests\\masterMOP\\main\\Program.cyan\", 126) RegExpr(\"a*b\") @popCompilationContext(atisemAn_id_183, \"cyan.lang\", \"RegExpr\") \n '" println;
+                  };
+ @popCompilationContext(atisemAn_id_184) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_186, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 127) 
+         if !(!(text ~=   @pushCompilationContext(atisemAn_id_185, "string(r, R)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 127) RegExpr("bc+") @popCompilationContext(atisemAn_id_185, "cyan.lang", "RegExpr") 
+ )) {
+                  "Assert failed in line 127 of prototype 'main.Program'" println;
+                  "Assert expression: '!(text ~=   @pushCompilationContext(atisemAn_id_185, \"string(r, R)\", main, \"C:\\Dropbox\\Cyan\\cyanTests\\masterMOP\\main\\Program.cyan\", 127) RegExpr(\"bc+\") @popCompilationContext(atisemAn_id_185, \"cyan.lang\", \"RegExpr\") \n )'" println;
+                  };
+ @popCompilationContext(atisemAn_id_186) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_188, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 128) 
+         if !(text ~=   @pushCompilationContext(atisemAn_id_187, "string(r, R)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 128) RegExpr("a+bc*") @popCompilationContext(atisemAn_id_187, "cyan.lang", "RegExpr") 
+ ) {
+                  "Assert failed in line 128 of prototype 'main.Program'" println;
+                  "Assert expression: 'text ~=   @pushCompilationContext(atisemAn_id_187, \"string(r, R)\", main, \"C:\\Dropbox\\Cyan\\cyanTests\\masterMOP\\main\\Program.cyan\", 128) RegExpr(\"a+bc*\") @popCompilationContext(atisemAn_id_187, \"cyan.lang\", \"RegExpr\") \n '" println;
+                  };
+ @popCompilationContext(atisemAn_id_188) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_190, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 129) 
+         if !(!(text ~=   @pushCompilationContext(atisemAn_id_189, "string(r, R)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 129) RegExpr("bb+c+") @popCompilationContext(atisemAn_id_189, "cyan.lang", "RegExpr") 
+ )) {
+                  "Assert failed in line 129 of prototype 'main.Program'" println;
+                  "Assert expression: '!(text ~=   @pushCompilationContext(atisemAn_id_189, \"string(r, R)\", main, \"C:\\Dropbox\\Cyan\\cyanTests\\masterMOP\\main\\Program.cyan\", 129) RegExpr(\"bb+c+\") @popCompilationContext(atisemAn_id_189, \"cyan.lang\", \"RegExpr\") \n )'" println;
+                  };
+ @popCompilationContext(atisemAn_id_190) 
+ 
+        
+        /*
+        if text ~= r"a*b" {
+            "has a*b" println;
+        }
+        if text ~= r"bc+" {
+            "has bc+" println;
+        }
+        
+        if text ~= r"a+bc*" {
+            "has a+bc*" println;
+        }
+        if text ~= r"bb+c+" {
+            "has bb+c+" println;
+        }
+        @compilationInfo(filename) println;
+        @compilationInfo("prototypename") println;
+        @compilationInfo(packagename) println;
+        
+        @compilationInfo("localvariablelist") println;
+        @compilationInfo("fieldlist") println;
+        @compilationInfo("signatureallmethodslist") println;
+        
+        let t1 = @compilationInfo("fieldlist") ++ " ivlist";
+        let t2 = @compilationInfo("fieldlist") size;
+        let t3 = "ivlist = " ++ @compilationInfo("fieldlist") ++ " ";
+        
+        t0 println;
+        t1 println;
+        t2 println;
+        t3 println;
+        */
+        
+          @pushCompilationContextStatement(atisemAn_id_192, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 163) 
+         if !( ( @compilationInfo#parsing(filename)  @pushCompilationContext(parsing25, "compilationInfo", "main", "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 163)  "C:\\Dropbox\\Cyan\\cyanTests\\masterMOP\\main\\Program.cyan" @popCompilationContext(parsing25, "cyan.lang", "String")  )  ==   @pushCompilationContext(atisemAn_id_191, "string(n, N)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 163) "C:\\Dropbox\\Cyan\\cyanTests\\masterMOP\\main\\Program.cyan" @popCompilationContext(atisemAn_id_191, "cyan.lang", "String") 
+ ) {
+                  "Assert failed in line 163 of prototype 'main.Program'" println;
+                  "Assert expression: ' ( @compilationInfo#parsing(filename)  @pushCompilationContext(parsing25, \"compilationInfo\", \"main\", \"C:\\Dropbox\\Cyan\\cyanTests\\masterMOP\\main\\Program.cyan\", 163)  \"C:\\\\Dropbox\\\\Cyan\\\\cyanTests\\\\masterMOP\\\\main\\\\Program.cyan\" @popCompilationContext(parsing25, \"cyan.lang\", \"String\")  )  ==   @pushCompilationContext(atisemAn_id_191, \"string(n, N)\", main, \"C:\\Dropbox\\Cyan\\cyanTests\\masterMOP\\main\\Program.cyan\", 163) \"C:\\\\Dropbox\\\\Cyan\\\\cyanTests\\\\masterMOP\\\\main\\\\Program.cyan\" @popCompilationContext(atisemAn_id_191, \"cyan.lang\", \"String\") \n '" println;
+                  };
+ @popCompilationContext(atisemAn_id_192) 
+ 
+        let fileName = @compilationInfo#parsing(filename) @pushCompilationContext(parsing26, "compilationInfo", "main", "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 164) "C:\\Dropbox\\Cyan\\cyanTests\\masterMOP\\main\\Program.cyan" @popCompilationContext(parsing26, "cyan.lang", "String") ;
+          @pushCompilationContextStatement(atisemAn_id_194, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 165) 
+         if !(fileName ==   @pushCompilationContext(atisemAn_id_193, "string(n, N)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 165) "C:\\Dropbox\\Cyan\\cyanTests\\masterMOP\\main\\Program.cyan" @popCompilationContext(atisemAn_id_193, "cyan.lang", "String") 
+ ) {
+                  "Assert failed in line 165 of prototype 'main.Program'" println;
+                  "Assert expression: 'fileName ==   @pushCompilationContext(atisemAn_id_193, \"string(n, N)\", main, \"C:\\Dropbox\\Cyan\\cyanTests\\masterMOP\\main\\Program.cyan\", 165) \"C:\\\\Dropbox\\\\Cyan\\\\cyanTests\\\\masterMOP\\\\main\\\\Program.cyan\" @popCompilationContext(atisemAn_id_193, \"cyan.lang\", \"String\") \n '" println;
+                  "'fileName' = " print;
+                  fileName println;
+                  };
+ @popCompilationContext(atisemAn_id_194) 
+ 
+
+          @pushCompilationContextStatement(atisemAn_id_195, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 167) 
+         if !( ( @compilationInfo#parsing("prototypename")  @pushCompilationContext(parsing27, "compilationInfo", "main", "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 167)  "Program" @popCompilationContext(parsing27, "cyan.lang", "String")  )  == "Program") {
+                  "Assert failed in line 167 of prototype 'main.Program'" println;
+                  "Assert expression: ' ( @compilationInfo#parsing(\"prototypename\")  @pushCompilationContext(parsing27, \"compilationInfo\", \"main\", \"C:\\Dropbox\\Cyan\\cyanTests\\masterMOP\\main\\Program.cyan\", 167)  \"Program\" @popCompilationContext(parsing27, \"cyan.lang\", \"String\")  )  == \"Program\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_195) 
+ 
+        var Proto p = Proto();
+        p at: 1 put: 'a';
+        p at: 2 put: 'b';
+        p at: 3 put: 'c';
+          @pushCompilationContextStatement(atisemAn_id_196, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 172) 
+         if !(p getText == "1a2b3c") {
+                  "Assert failed in line 172 of prototype 'main.Program'" println;
+                  "Assert expression: 'p getText == \"1a2b3c\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_196) 
+ 
+        
+        
+        let mil = @extract(int_1000)  @pushCompilationContext(atisemAn_id_197, "extract", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 175) 1000 @popCompilationContext(atisemAn_id_197, "cyan.lang", "Int") 
+ ;
+        let dois222 = { let d2 = @extract(int2222)  @pushCompilationContext(atisemAn_id_198, "extract", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 176) 2222 @popCompilationContext(atisemAn_id_198, "cyan.lang", "Int") 
+ ; ^d2 } eval;
+          @pushCompilationContextStatement(atisemAn_id_199, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 177) 
+         if !(mil == 1000 && dois222 == 2222) {
+                  "Assert failed in line 177 of prototype 'main.Program'" println;
+                  "Assert expression: 'mil == 1000 && dois222 == 2222'" println;
+                  };
+ @popCompilationContext(atisemAn_id_199) 
+ 
+        
+        
+          @pushCompilationContextStatement(atisemAn_id_200, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 180) 
+         if !((self aa: "", 0 bb: 'a' cc: 0.0) == "aa:2 bb:1 cc:1") {
+                  "Assert failed in line 180 of prototype 'main.Program'" println;
+                  "Assert expression: '(self aa: \"\", 0 bb: \'a\' cc: 0.0) == \"aa:2 bb:1 cc:1\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_200) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_201, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 181) 
+         if !((self aa: "", 0 bb: 'a' cc: 0.0 dd: ) == "aa: String, Int bb: Char cc: Double dd: -> String") {
+                  "Assert failed in line 181 of prototype 'main.Program'" println;
+                  "Assert expression: '(self aa: \"\", 0 bb: \'a\' cc: 0.0 dd: ) == \"aa: String, Int bb: Char cc: Double dd: -> String\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_201) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_202, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 182) 
+         if !(self abc == "cyan.lang.String") {
+                  "Assert failed in line 182 of prototype 'main.Program'" println;
+                  "Assert expression: 'self abc == \"cyan.lang.String\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_202) 
+ 
+        
+        other.Taint() run;
+        testPluggableTypes.PluggableTypesTest<Int>() run;
+        
+        FileTest run;
+        
+        Proto run;
+        
+        "end of masterMOP" println;
+    }
+    
+    
+    func at: Int k put: String s {
+    }
+    
+    func abc -> String = @compilationInfo#parsing(currentMethodReturnTypeName)  @pushCompilationContext(atisemAn_id_203, "compilationInfo", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 198) "cyan.lang.String" @popCompilationContext(atisemAn_id_203, "cyan.lang", "String") 
+ ;
+    
+    func aa: String a, Int b bb: Char c cc: Double -> String = @compilationInfo#parsing(currentMethodName)  @pushCompilationContext(atisemAn_id_204, "compilationInfo", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 200) "aa:2 bb:1 cc:1" @popCompilationContext(atisemAn_id_204, "cyan.lang", "String") 
+ ;
+    func aa: String a, Int b bb: Char c cc: Double dd: -> String = @compilationInfo#parsing(currentMethodFullName)  @pushCompilationContext(atisemAn_id_205, "compilationInfo", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 201) "aa: String, Int bb: Char cc: Double dd: -> String" @popCompilationContext(atisemAn_id_205, "cyan.lang", "String") 
+ ;
+
+    
+    func myself -> Program .# writeCode = Program;
+
+
+    func grammarTest {
+        let IntSet is3 = IntSet();
+          @pushCompilationContext(atisemAn_id_206, "grammarMethod", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\IntSet.cyan", 5) is3 addMany:  [ 0, 1, 2 ]  @popCompilationContext(atisemAn_id_206, "cyan.lang", "Nil") 
+;
+        var sum = 0;
+        var prod = 1;
+        for elem in is3 getSet {
+            sum = sum + elem;
+            if elem != 0 {
+                prod = prod*elem;
+            }
+        }
+          @pushCompilationContextStatement(atisemAn_id_207, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 218) 
+         if !(sum == 3 && prod == 2) {
+                  "Assert failed in line 218 of prototype 'main.Program'" println;
+                  "Assert expression: 'sum == 3 && prod == 2'" println;
+                  };
+ @popCompilationContext(atisemAn_id_207) 
+ 
+          @pushCompilationContext(atisemAn_id_208, "grammarMethod", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\IntSet.cyan", 15) is3 addManySelectors:  [ 3, 4, 5 ]  @popCompilationContext(atisemAn_id_208, "cyan.lang", "Nil") 
+;
+        sum = 0;
+        prod = 1;
+        for elem in is3 getSet {
+            sum = sum + elem;
+            if elem != 0 {
+                prod = prod*elem;
+            }
+        }
+          @pushCompilationContextStatement(atisemAn_id_209, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 228) 
+         if !(sum == 15 && prod == 120) {
+                  "Assert failed in line 228 of prototype 'main.Program'" println;
+                  "Assert expression: 'sum == 15 && prod == 120'" println;
+                  };
+ @popCompilationContext(atisemAn_id_209) 
+         
+    }
+
+    Int aaa = 0;
+    Int bbb = 1;
+    String ccc = "2";
+    String ddd = "3";
+    String eee = "4";
+    
+    
+    func functionTest {
+        /*
+        let Array<String> strArray = Array<String>();
+        let Function<String, Nil> addMethod = 
+           strArray functionForMethod: "add:1";
+        addMethod eval: "A";
+        addMethod eval: "B";
+        assert strArray size == 2;
+        assert strArray[0] == "A" &&
+               strArray[1] == "B";
+        */
+        
+        var helpItem = MenuItem new;
+        helpItem onMouseClick: (  @pushCompilationContext(atisemAn_id_210, "changeFunctionForMethod", "the project file ", "C:\Dropbox\Cyan\lib\cyan\lang\allInterfaces.iyan", 80)  {  ^Help show }  @popCompilationContext(atisemAn_id_210, "cyan.lang", "Function<Int>") 
+ );
+        var openItem = MenuItem new;
+        openItem onMouseClick: (  @pushCompilationContext(atisemAn_id_211, "changeFunctionForMethod", "the project file ", "C:\Dropbox\Cyan\lib\cyan\lang\allInterfaces.iyan", 80)  {  ^FileMenu open }  @popCompilationContext(atisemAn_id_211, "cyan.lang", "Function<Int>") 
+);
+        
+          @pushCompilationContextStatement(atisemAn_id_212, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 255) 
+         if !(helpItem action == 0) {
+                  "Assert failed in line 255 of prototype 'main.Program'" println;
+                  "Assert expression: 'helpItem action == 0'" println;
+                  };
+ @popCompilationContext(atisemAn_id_212) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_213, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 256) 
+         if !(openItem action == 1) {
+                  "Assert failed in line 256 of prototype 'main.Program'" println;
+                  "Assert expression: 'openItem action == 1'" println;
+                  };
+ @popCompilationContext(atisemAn_id_213) 
+ 
+        
+        let Test t = Test();
+        let IMap<String, Function<Int, Int>> methodMap = [ 
+            "add10" -> (  @pushCompilationContext(atisemAn_id_214, "changeFunctionForMethod", "the project file ", "C:\Dropbox\Cyan\lib\cyan\lang\allInterfaces.iyan", 80)  { (: cyan.lang.Int var2 :) ^t add10:  var2 }  @popCompilationContext(atisemAn_id_214, "cyan.lang", "Function<Int,Int>") 
+),
+            "twice" -> (  @pushCompilationContext(atisemAn_id_215, "changeFunctionForMethod", "the project file ", "C:\Dropbox\Cyan\lib\cyan\lang\allInterfaces.iyan", 80)  { (: cyan.lang.Int var4 :) ^t twice:  var4 }  @popCompilationContext(atisemAn_id_215, "cyan.lang", "Function<Int,Int>") 
+),
+            "cube"  -> (  @pushCompilationContext(atisemAn_id_216, "changeFunctionForMethod", "the project file ", "C:\Dropbox\Cyan\lib\cyan\lang\allInterfaces.iyan", 80)  { (: cyan.lang.Int var6 :) ^t cube:  var6 }  @popCompilationContext(atisemAn_id_216, "cyan.lang", "Function<Int,Int>") 
+)
+            ];
+        cast f = methodMap["twice"] {
+              @pushCompilationContextStatement(atisemAn_id_405, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 265) 
+             if !(f eval: 3 == 6) {
+                          "Assert failed in line 265 of prototype 'main.Program'" println;
+                          "Assert expression: 'f eval: 3 == 6'" println;
+                          };
+ @popCompilationContext(atisemAn_id_405) 
+ 
+        }
+        else {
+              @pushCompilationContextStatement(atisemAn_id_406, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 268) 
+             if !(false) {
+                          "Assert failed in line 268 of prototype 'main.Program'" println;
+                          "Assert expression: 'false'" println;
+                          };
+ @popCompilationContext(atisemAn_id_406) 
+ 
+        }
+        cast f = methodMap["add10"] {
+              @pushCompilationContextStatement(atisemAn_id_407, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 271) 
+             if !(f eval: 3 == 13) {
+                          "Assert failed in line 271 of prototype 'main.Program'" println;
+                          "Assert expression: 'f eval: 3 == 13'" println;
+                          };
+ @popCompilationContext(atisemAn_id_407) 
+ 
+        }
+        else {
+              @pushCompilationContextStatement(atisemAn_id_408, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 274) 
+             if !(false) {
+                          "Assert failed in line 274 of prototype 'main.Program'" println;
+                          "Assert expression: 'false'" println;
+                          };
+ @popCompilationContext(atisemAn_id_408) 
+ 
+        }
+        cast f = methodMap["cube"] {
+              @pushCompilationContextStatement(atisemAn_id_409, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 277) 
+             if !(f eval: 3 == 27) {
+                          "Assert failed in line 277 of prototype 'main.Program'" println;
+                          "Assert expression: 'f eval: 3 == 27'" println;
+                          };
+ @popCompilationContext(atisemAn_id_409) 
+ 
+        }
+        else {
+              @pushCompilationContextStatement(atisemAn_id_410, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 280) 
+             if !(false) {
+                          "Assert failed in line 280 of prototype 'main.Program'" println;
+                          "Assert expression: 'false'" println;
+                          };
+ @popCompilationContext(atisemAn_id_410) 
+ 
+        }
+        
+    }
+
+
+    
+    
+    func getSetTest {
+
+         @markDeletedCode(1)   @pushCompilationContextStatement(atisemAn_id_411, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 290) 
+         if !(getAge == 11 && getMonthDay == 14 && name == "Newton" && college == "Cambridge") {
+                  "Assert failed in line 290 of prototype 'main.Program'" println;
+                  "Assert expression: 'getAge == 11 && getMonthDay == 14 && name == \"Newton\" && college == \"Cambridge\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_411) 
+ 
+                 
+        /* printexpr getAge;
+        printexpr getMonthDay;
+        printexpr name;
+        printexpr college; */
+        
+        self setAge: 22;
+        self setMonthDay: 28;
+        self name: "Godel";
+        self college: "IEA";
+
+        /* printexpr getAge;
+        printexpr getMonthDay;
+        printexpr name;
+        printexpr college;  */
+
+         @markDeletedCode(1)   @pushCompilationContextStatement(atisemAn_id_412, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 308) 
+         if !(getAge == 22 && getMonthDay == 28 && name == "Godel" && college == "IEA") {
+                  "Assert failed in line 308 of prototype 'main.Program'" println;
+                  "Assert expression: 'getAge == 22 && getMonthDay == 28 && name == \"Godel\" && college == \"IEA\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_412) 
+ 
+             
+        setAge: (getAge + 8);
+        setMonthDay: (getMonthDay + 2);
+        name: (name ++ " K.");
+        college: (college ++ " Princeton");
+
+         @markDeletedCode(1)   @pushCompilationContextStatement(atisemAn_id_413, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 316) 
+         if !(getAge == 30 && getMonthDay == 30 && name == "Godel K." && college == "IEA Princeton") {
+                  "Assert failed in line 316 of prototype 'main.Program'" println;
+                  "Assert expression: 'getAge == 30 && getMonthDay == 30 && name == \"Godel K.\" && college == \"IEA Princeton\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_413) 
+ 
+
+          @pushCompilationContextStatement(atisemAn_id_414, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 319) 
+         if !(Program getSharedFixed == "sharedFixed") {
+                  "Assert failed in line 319 of prototype 'main.Program'" println;
+                  "Assert expression: 'Program getSharedFixed == \"sharedFixed\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_414) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_415, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 320) 
+         if !(getFixed == "fixed") {
+                  "Assert failed in line 320 of prototype 'main.Program'" println;
+                  "Assert expression: 'getFixed == \"fixed\"'" println;
+                  "'getFixed' = " print;
+                  getFixed println;
+                  };
+ @popCompilationContext(atisemAn_id_415) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_416, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 321) 
+         if !(underFixed == "underFixed") {
+                  "Assert failed in line 321 of prototype 'main.Program'" println;
+                  "Assert expression: 'underFixed == \"underFixed\"'" println;
+                  "'underFixed' = " print;
+                  underFixed println;
+                  };
+ @popCompilationContext(atisemAn_id_416) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_417, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 322) 
+         if !(Program underSharedFixed == "underSharedFixed") {
+                  "Assert failed in line 322 of prototype 'main.Program'" println;
+                  "Assert expression: 'Program underSharedFixed == \"underSharedFixed\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_417) 
+ 
+        /*
+        printexpr fixed;
+        printexpr sharedFixed;
+        printexpr underFixed;
+        printexpr underSharedFixed;
+        */
+        
+    }
+    
+    func conceptTest {
+        var GroupWork<IntGroupPlus> gwi = GroupWork<IntGroupPlus> new;
+        var a = IntGroupPlus(1);
+        var b = IntGroupPlus(5);
+        var c = IntGroupPlus(11);
+        var zero = IntGroupPlus(0);
+          @pushCompilationContextStatement(atisemAn_id_418, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 338) 
+         if !(a inverse inverse == a) {
+                  "Assert failed in line 338 of prototype 'main.Program'" println;
+                  "Assert expression: 'a inverse inverse == a'" println;
+                  };
+ @popCompilationContext(atisemAn_id_418) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_419, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 339) 
+         if !(a unit == zero) {
+                  "Assert failed in line 339 of prototype 'main.Program'" println;
+                  "Assert expression: 'a unit == zero'" println;
+                  };
+ @popCompilationContext(atisemAn_id_419) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_420, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 340) 
+         if !(a * a inverse == zero) {
+                  "Assert failed in line 340 of prototype 'main.Program'" println;
+                  "Assert expression: 'a * a inverse == zero'" println;
+                  };
+ @popCompilationContext(atisemAn_id_420) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_421, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 341) 
+         if !(a * a unit == a) {
+                  "Assert failed in line 341 of prototype 'main.Program'" println;
+                  "Assert expression: 'a * a unit == a'" println;
+                  };
+ @popCompilationContext(atisemAn_id_421) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_422, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 342) 
+         if !((b inverse * a inverse) * a * b == a unit) {
+                  "Assert failed in line 342 of prototype 'main.Program'" println;
+                  "Assert expression: '(b inverse * a inverse) * a * b == a unit'" println;
+                  };
+ @popCompilationContext(atisemAn_id_422) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_423, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 343) 
+         if !((c inverse * b inverse * a inverse) * a * b * c == zero) {
+                  "Assert failed in line 343 of prototype 'main.Program'" println;
+                  "Assert expression: '(c inverse * b inverse * a inverse) * a * b * c == zero'" println;
+                  };
+ @popCompilationContext(atisemAn_id_423) 
+ 
+
+          @pushCompilationContextStatement(atisemAn_id_424, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 345) 
+         if !(b * b * a == c && c * b inverse * a inverse == b) {
+                  "Assert failed in line 345 of prototype 'main.Program'" println;
+                  "Assert expression: 'b * b * a == c && c * b inverse * a inverse == b'" println;
+                  };
+ @popCompilationContext(atisemAn_id_424) 
+ 
+        
+        GroupWork<IntGroupPlus> work: a, b, c;
+        GroupWork<IntGroupPlus> workout: a, b, c;
+        
+        conceptPackage.ConceptTest() run;
+    }
+
+    @createPrototype#parsing(
+          "Dragon", 
+          "package main\nobject Dragon\n    func get -> Int { return 0 }\n\nend",
+          
+          "Elf", 
+          "package main\nobject Elf\n    func get -> String { return \"Elf !\" }\n\nend"
+    )
+    
+    func createPrototypeTest {
+    
+        let Dragon dragon = Dragon new;
+          @pushCompilationContextStatement(atisemAn_id_425, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 364) 
+         if !(dragon get == 0) {
+                  "Assert failed in line 364 of prototype 'main.Program'" println;
+                  "Assert expression: 'dragon get == 0'" println;
+                  };
+ @popCompilationContext(atisemAn_id_425) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_426, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 365) 
+         if !(Elf() get == "Elf !") {
+                  "Assert failed in line 365 of prototype 'main.Program'" println;
+                  "Assert expression: 'Elf() get == \"Elf !\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_426) 
+ 
+    }
+    
+
+    func addMethodsToArrayTest {
+    
+        // "addMethodsToArrayTest" println;
+        var intArray = [ 1, 2, 3 ];
+    
+        let funcArray = [ { ^1 }, { ^2 }, { ^3 } ];
+          @pushCompilationContextStatement(atisemAn_id_445, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 375) 
+         if !(funcArray sum == 6) {
+                  "Assert failed in line 375 of prototype 'main.Program'" println;
+                  "Assert expression: 'funcArray sum == 6'" println;
+                  };
+ @popCompilationContext(atisemAn_id_445) 
+ 
+        funcArray add: { ^4 };
+          @pushCompilationContextStatement(atisemAn_id_446, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 377) 
+         if !(funcArray sum == 10) {
+                  "Assert failed in line 377 of prototype 'main.Program'" println;
+                  "Assert expression: 'funcArray sum == 10'" println;
+                  };
+ @popCompilationContext(atisemAn_id_446) 
+ 
+        
+    
+          @pushCompilationContextStatement(atisemAn_id_447, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 380) 
+         if !(intArray sum == 6) {
+                  "Assert failed in line 380 of prototype 'main.Program'" println;
+                  "Assert expression: 'intArray sum == 6'" println;
+                  };
+ @popCompilationContext(atisemAn_id_447) 
+ 
+        
+        var matriz = [ [ 1, 2, 3 ],
+                       [ 4, 5, 6 ],
+                       [ 7, 8, 9 ] ];
+          @pushCompilationContextStatement(atisemAn_id_448, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 385) 
+         if !(matriz sumDiagonal == 1 + 5 + 9) {
+                  "Assert failed in line 385 of prototype 'main.Program'" println;
+                  "Assert expression: 'matriz sumDiagonal == 1 + 5 + 9'" println;
+                  };
+ @popCompilationContext(atisemAn_id_448) 
+ 
+        
+          @pushCompilationContextStatement(atisemAn_id_449, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 387) 
+         if !(matriz flat ==  [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ] ) {
+                  "Assert failed in line 387 of prototype 'main.Program'" println;
+                  "Assert expression: 'matriz flat ==  [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ] '" println;
+                  };
+ @popCompilationContext(atisemAn_id_449) 
+ 
+        
+    
+        var Array<String> as = [ "c", "b", "a" ];
+          @pushCompilationContextStatement(atisemAn_id_450, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 391) 
+         if !(as sort ==  [ "a", "b", "c" ] ) {
+                  "Assert failed in line 391 of prototype 'main.Program'" println;
+                  "Assert expression: 'as sort ==  [ \"a\", \"b\", \"c\" ] '" println;
+                  };
+ @popCompilationContext(atisemAn_id_450) 
+ 
+        
+          @pushCompilationContextStatement(atisemAn_id_451, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 393) 
+         if !(as sortDescending ==  [ "c", "b", "a" ] ) {
+                  "Assert failed in line 393 of prototype 'main.Program'" println;
+                  "Assert expression: 'as sortDescending ==  [ \"c\", \"b\", \"a\" ] '" println;
+                  };
+ @popCompilationContext(atisemAn_id_451) 
+ 
+        as = [ "e", "a", "c", "b", "d" ];
+          @pushCompilationContextStatement(atisemAn_id_452, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 395) 
+         if !(as sort ==  [ "a", "b", "c", "d", "e" ] ) {
+                  "Assert failed in line 395 of prototype 'main.Program'" println;
+                  "Assert expression: 'as sort ==  [ \"a\", \"b\", \"c\", \"d\", \"e\" ] '" println;
+                  };
+ @popCompilationContext(atisemAn_id_452) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_453, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 396) 
+         if !(as sortDescending ==  [ "e", "d", "c", "b", "a" ] ) {
+                  "Assert failed in line 396 of prototype 'main.Program'" println;
+                  "Assert expression: 'as sortDescending ==  [ \"e\", \"d\", \"c\", \"b\", \"a\" ] '" println;
+                  };
+ @popCompilationContext(atisemAn_id_453) 
+ 
+        
+        var ap = [ "first", "second", "third" ];
+        
+        
+          @pushCompilationContextStatement(atisemAn_id_454, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 401) 
+         if !(ap join == "firstsecondthird") {
+                  "Assert failed in line 401 of prototype 'main.Program'" println;
+                  "Assert expression: 'ap join == \"firstsecondthird\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_454) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_455, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 402) 
+         if !((ap join: ", ") == "first, second, third") {
+                  "Assert failed in line 402 of prototype 'main.Program'" println;
+                  "Assert expression: '(ap join: \", \") == \"first, second, third\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_455) 
+ 
+
+          @pushCompilationContextStatement(atisemAn_id_456, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 404) 
+         if !(as join == "edcba") {
+                  "Assert failed in line 404 of prototype 'main.Program'" println;
+                  "Assert expression: 'as join == \"edcba\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_456) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_457, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 405) 
+         if !((as join: ", ") == "e, d, c, b, a") {
+                  "Assert failed in line 405 of prototype 'main.Program'" println;
+                  "Assert expression: '(as join: \", \") == \"e, d, c, b, a\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_457) 
+ 
+        
+        ap = [ "one" ];
+
+          @pushCompilationContextStatement(atisemAn_id_458, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 409) 
+         if !(ap join == "one") {
+                  "Assert failed in line 409 of prototype 'main.Program'" println;
+                  "Assert expression: 'ap join == \"one\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_458) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_459, "macro(assert)", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 410) 
+         if !((ap join: ", ") == "one") {
+                  "Assert failed in line 410 of prototype 'main.Program'" println;
+                  "Assert expression: '(ap join: \", \") == \"one\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_459) 
+ 
+
+    }
+
+    @property#afterResTypes var Int age;
+    @property#afterResTypes var Int monthDay;
+    @property#afterResTypes var String _name;
+    @property#afterResTypes var String _college;
+
+    @property#afterResTypes String fixed = "fixed";
+    @property#afterResTypes shared String sharedFixed = "sharedFixed";
+
+    @property#afterResTypes String _underFixed = "underFixed";
+    @property#afterResTypes shared String _underSharedFixed = "underSharedFixed";
+        
+ @pushCompilationContextStatement(pp28, pp) 
+
+    // Methods added by the compiler
+    override    func prototype -> Program {
+        @javacode{* return prototype;
+        *}
+    } 
+ @popCompilationContext(pp28) 
+ @pushCompilationContextStatement(atisemAn_id_18, "property", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 414, "    func getAge -> cyan.lang.Int;      func setAge: cyan.lang.Int other;") 
+    func getAge -> cyan.lang.Int = age;
+    func setAge: cyan.lang.Int other { self.age = other; }
+
+ @popCompilationContext(atisemAn_id_18) 
+ @pushCompilationContextStatement(atisemAn_id_19, "property", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 415, "    func getMonthDay -> cyan.lang.Int;      func setMonthDay: cyan.lang.Int other;") 
+    func getMonthDay -> cyan.lang.Int = monthDay;
+    func setMonthDay: cyan.lang.Int other { self.monthDay = other; }
+
+ @popCompilationContext(atisemAn_id_19) 
+ @pushCompilationContextStatement(atisemAn_id_20, "property", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 416, "    func name -> cyan.lang.String;      func name: cyan.lang.String other;") 
+    func name -> cyan.lang.String = _name;
+    func name: cyan.lang.String other { self._name = other; }
+
+ @popCompilationContext(atisemAn_id_20) 
+ @pushCompilationContextStatement(atisemAn_id_21, "property", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 417, "    func college -> cyan.lang.String;      func college: cyan.lang.String other;") 
+    func college -> cyan.lang.String = _college;
+    func college: cyan.lang.String other { self._college = other; }
+
+ @popCompilationContext(atisemAn_id_21) 
+ @pushCompilationContextStatement(atisemAn_id_22, "property", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 419, "    func getFixed -> cyan.lang.String;  ") 
+    func getFixed -> cyan.lang.String = fixed;
+
+ @popCompilationContext(atisemAn_id_22) 
+ @pushCompilationContextStatement(atisemAn_id_23, "property", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 420, "    func getSharedFixed -> cyan.lang.String;  ") 
+    @prototypeCallOnly
+    func getSharedFixed -> cyan.lang.String = sharedFixed;
+
+ @popCompilationContext(atisemAn_id_23) 
+ @pushCompilationContextStatement(atisemAn_id_24, "property", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 422, "    func underFixed -> cyan.lang.String;  ") 
+    func underFixed -> cyan.lang.String = _underFixed;
+
+ @popCompilationContext(atisemAn_id_24) 
+ @pushCompilationContextStatement(atisemAn_id_25, "property", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 423, "    func underSharedFixed -> cyan.lang.String;  ") 
+    @prototypeCallOnly
+    func underSharedFixed -> cyan.lang.String = _underSharedFixed;
+
+ @popCompilationContext(atisemAn_id_25) 
+ @pushCompilationContextStatement(new147, new) 
+    // Methods added by the compiler
+
+    override    func clone -> Program {
+        @javacode<<*
+        try {
+            return (_Program ) this.clone(); 
+        } catch (CloneNotSupportedException e) { }
+        return null;
+        *>>    } 
+
+    func new -> Program {
+         @javacode<**< 
+            return new _Program();         >**>
+    }
+ @popCompilationContext(new147) 
+ @pushCompilationContext(inner1106, inner) 
+    override
+    func getFeatureListNameDoesNotCollide__ -> Array<Tuple<key, String, value, Any>> {
+        return Array<Tuple<key, String, value, Any>> new;
+    }
+    override
+    func getAnnotListNameDoesNotCollide__ -> Array<Any> {
+        return Array<Any> new;
+    }
+
+    override
+    func getSlotFeatureListNameDoesNotCollide__ -> Array<Tuple<slotName, String, key, String, value, Any>> {
+        let slotFeatureList_name_does_not_collide__ = Array<Tuple<slotName, String, key, String, value, Any>> new;
+        return slotFeatureList_name_does_not_collide__;
+    }
+ @popCompilationContext(inner1106) 
+ @pushCompilationContext(inner1107, inner) 
+        // a prototype for each of the anonymous functions of prototype Program 
+
+    object Fun_0__(Program self__, Any & s100, Any & err)  extends Function<Nil>
+        override
+        func eval -> Any  { 
+            s100 set: 99; 
+            s100 set: 100; 
+            err = false
+        }
+
+      @pushCompilationContextStatement(new1109, new) 
+    // Methods added by the compiler
+
+    override    func clone -> Fun_0__ {
+        @javacode<<*
+        try {
+            return (_Fun__0____ ) this.clone(); 
+        } catch (CloneNotSupportedException e) { }
+        return null;
+        *>>    } 
+
+    func init: Program self__, Any &s100, Any &err {
+        @javacode{*
+        this._self____ = _self____;
+        this._s100 = _s100;
+        this._err = _err;
+        *}
+    }
+
+    func new: Program self__, Any &s100, Any &err -> Fun_0__ {
+        @javacode<**< 
+            return new _Fun__0____(_self____, _s100, _err);
+        >**>
+    }
+ @popCompilationContext(new1109) 
+@pushCompilationContextStatement(pp1108, pp) 
+
+    // Methods added by the compiler
+    override    func prototype -> Fun_0__ {
+        @javacode{* return prototypeFun_0__;
+        *}
+    } 
+ @popCompilationContext(pp1108) 
+end
+
+    object Fun_1__(Program self__, Any & s100, Any & err)  extends Function<Nil>
+        override
+        func eval -> Any  { 
+            s100 set: 101; 
+            err = true
+        }
+
+      @pushCompilationContextStatement(new1111, new) 
+    // Methods added by the compiler
+
+    override    func clone -> Fun_1__ {
+        @javacode<<*
+        try {
+            return (_Fun__1____ ) this.clone(); 
+        } catch (CloneNotSupportedException e) { }
+        return null;
+        *>>    } 
+
+    func init: Program self__, Any &s100, Any &err {
+        @javacode{*
+        this._self____ = _self____;
+        this._s100 = _s100;
+        this._err = _err;
+        *}
+    }
+
+    func new: Program self__, Any &s100, Any &err -> Fun_1__ {
+        @javacode<**< 
+            return new _Fun__1____(_self____, _s100, _err);
+        >**>
+    }
+ @popCompilationContext(new1111) 
+@pushCompilationContextStatement(pp1110, pp) 
+
+    // Methods added by the compiler
+    override    func prototype -> Fun_1__ {
+        @javacode{* return prototypeFun_1__;
+        *}
+    } 
+ @popCompilationContext(pp1110) 
+end
+
+    object Fun_2__(Program self__)  extends Function<Nil>
+        override
+        func eval -> Any  { 
+            let d2 =  (             @extract(int2222)              @pushCompilationContext(atisemAn_id_198, "extract", main, "C:\Dropbox\Cyan\cyanTests\masterMOP\main\Program.cyan", 176)  2222             @popCompilationContext(atisemAn_id_198, "cyan.lang", "Int")  ) ; 
+            return d2
+        }
+
+      @pushCompilationContextStatement(new1113, new) 
+    // Methods added by the compiler
+
+    override    func clone -> Fun_2__ {
+        @javacode<<*
+        try {
+            return (_Fun__2____ ) this.clone(); 
+        } catch (CloneNotSupportedException e) { }
+        return null;
+        *>>    } 
+
+    func init: Program self__ {
+        @javacode{*
+        this._self____ = _self____;
+        *}
+    }
+
+    func new: Program self__ -> Fun_2__ {
+        @javacode<**< 
+            return new _Fun__2____(_self____);
+        >**>
+    }
+ @popCompilationContext(new1113) 
+@pushCompilationContextStatement(pp1112, pp) 
+
+    // Methods added by the compiler
+    override    func prototype -> Fun_2__ {
+        @javacode{* return prototypeFun_2__;
+        *}
+    } 
+ @popCompilationContext(pp1112) 
+end
+
+    object Fun_3__(Program self__)  extends Function<Nil>
+        override
+        func eval -> Any  { 
+            return Help show
+        }
+
+      @pushCompilationContextStatement(new1115, new) 
+    // Methods added by the compiler
+
+    override    func clone -> Fun_3__ {
+        @javacode<<*
+        try {
+            return (_Fun__3____ ) this.clone(); 
+        } catch (CloneNotSupportedException e) { }
+        return null;
+        *>>    } 
+
+    func init: Program self__ {
+        @javacode{*
+        this._self____ = _self____;
+        *}
+    }
+
+    func new: Program self__ -> Fun_3__ {
+        @javacode<**< 
+            return new _Fun__3____(_self____);
+        >**>
+    }
+ @popCompilationContext(new1115) 
+@pushCompilationContextStatement(pp1114, pp) 
+
+    // Methods added by the compiler
+    override    func prototype -> Fun_3__ {
+        @javacode{* return prototypeFun_3__;
+        *}
+    } 
+ @popCompilationContext(pp1114) 
+end
+
+    object Fun_4__(Program self__)  extends Function<Nil>
+        override
+        func eval -> Any  { 
+            return FileMenu open
+        }
+
+      @pushCompilationContextStatement(new1117, new) 
+    // Methods added by the compiler
+
+    override    func clone -> Fun_4__ {
+        @javacode<<*
+        try {
+            return (_Fun__4____ ) this.clone(); 
+        } catch (CloneNotSupportedException e) { }
+        return null;
+        *>>    } 
+
+    func init: Program self__ {
+        @javacode{*
+        this._self____ = _self____;
+        *}
+    }
+
+    func new: Program self__ -> Fun_4__ {
+        @javacode<**< 
+            return new _Fun__4____(_self____);
+        >**>
+    }
+ @popCompilationContext(new1117) 
+@pushCompilationContextStatement(pp1116, pp) 
+
+    // Methods added by the compiler
+    override    func prototype -> Fun_4__ {
+        @javacode{* return prototypeFun_4__;
+        *}
+    } 
+ @popCompilationContext(pp1116) 
+end
+
+    object Fun_5__(Program self__, Any t)  extends Function<cyan.lang.Int, Any>
+
+        override
+        func eval: cyan.lang.Int var2 -> Any  { 
+            return t add10: var2
+        }
+
+      @pushCompilationContextStatement(new1119, new) 
+    // Methods added by the compiler
+
+    override    func clone -> Fun_5__ {
+        @javacode<<*
+        try {
+            return (_Fun__5____ ) this.clone(); 
+        } catch (CloneNotSupportedException e) { }
+        return null;
+        *>>    } 
+
+    func init: Program self__, Any t {
+        @javacode{*
+        this._self____ = _self____;
+        this._t = _t;
+        *}
+    }
+
+    func new: Program self__, Any t -> Fun_5__ {
+        @javacode<**< 
+            return new _Fun__5____(_self____, _t);
+        >**>
+    }
+ @popCompilationContext(new1119) 
+@pushCompilationContextStatement(pp1118, pp) 
+
+    // Methods added by the compiler
+    override    func prototype -> Fun_5__ {
+        @javacode{* return prototypeFun_5__;
+        *}
+    } 
+ @popCompilationContext(pp1118) 
+end
+
+    object Fun_6__(Program self__, Any t)  extends Function<cyan.lang.Int, Any>
+
+        override
+        func eval: cyan.lang.Int var4 -> Any  { 
+            return t twice: var4
+        }
+
+      @pushCompilationContextStatement(new1121, new) 
+    // Methods added by the compiler
+
+    override    func clone -> Fun_6__ {
+        @javacode<<*
+        try {
+            return (_Fun__6____ ) this.clone(); 
+        } catch (CloneNotSupportedException e) { }
+        return null;
+        *>>    } 
+
+    func init: Program self__, Any t {
+        @javacode{*
+        this._self____ = _self____;
+        this._t = _t;
+        *}
+    }
+
+    func new: Program self__, Any t -> Fun_6__ {
+        @javacode<**< 
+            return new _Fun__6____(_self____, _t);
+        >**>
+    }
+ @popCompilationContext(new1121) 
+@pushCompilationContextStatement(pp1120, pp) 
+
+    // Methods added by the compiler
+    override    func prototype -> Fun_6__ {
+        @javacode{* return prototypeFun_6__;
+        *}
+    } 
+ @popCompilationContext(pp1120) 
+end
+
+    object Fun_7__(Program self__, Any t)  extends Function<cyan.lang.Int, Any>
+
+        override
+        func eval: cyan.lang.Int var6 -> Any  { 
+            return t cube: var6
+        }
+
+      @pushCompilationContextStatement(new1123, new) 
+    // Methods added by the compiler
+
+    override    func clone -> Fun_7__ {
+        @javacode<<*
+        try {
+            return (_Fun__7____ ) this.clone(); 
+        } catch (CloneNotSupportedException e) { }
+        return null;
+        *>>    } 
+
+    func init: Program self__, Any t {
+        @javacode{*
+        this._self____ = _self____;
+        this._t = _t;
+        *}
+    }
+
+    func new: Program self__, Any t -> Fun_7__ {
+        @javacode<**< 
+            return new _Fun__7____(_self____, _t);
+        >**>
+    }
+ @popCompilationContext(new1123) 
+@pushCompilationContextStatement(pp1122, pp) 
+
+    // Methods added by the compiler
+    override    func prototype -> Fun_7__ {
+        @javacode{* return prototypeFun_7__;
+        *}
+    } 
+ @popCompilationContext(pp1122) 
+end
+
+    object Fun_8__(Program self__)  extends Function<Nil>
+        override
+        func eval -> Any  { 
+            return 1
+        }
+
+      @pushCompilationContextStatement(new1125, new) 
+    // Methods added by the compiler
+
+    override    func clone -> Fun_8__ {
+        @javacode<<*
+        try {
+            return (_Fun__8____ ) this.clone(); 
+        } catch (CloneNotSupportedException e) { }
+        return null;
+        *>>    } 
+
+    func init: Program self__ {
+        @javacode{*
+        this._self____ = _self____;
+        *}
+    }
+
+    func new: Program self__ -> Fun_8__ {
+        @javacode<**< 
+            return new _Fun__8____(_self____);
+        >**>
+    }
+ @popCompilationContext(new1125) 
+@pushCompilationContextStatement(pp1124, pp) 
+
+    // Methods added by the compiler
+    override    func prototype -> Fun_8__ {
+        @javacode{* return prototypeFun_8__;
+        *}
+    } 
+ @popCompilationContext(pp1124) 
+end
+
+    object Fun_9__(Program self__)  extends Function<Nil>
+        override
+        func eval -> Any  { 
+            return 2
+        }
+
+      @pushCompilationContextStatement(new1127, new) 
+    // Methods added by the compiler
+
+    override    func clone -> Fun_9__ {
+        @javacode<<*
+        try {
+            return (_Fun__9____ ) this.clone(); 
+        } catch (CloneNotSupportedException e) { }
+        return null;
+        *>>    } 
+
+    func init: Program self__ {
+        @javacode{*
+        this._self____ = _self____;
+        *}
+    }
+
+    func new: Program self__ -> Fun_9__ {
+        @javacode<**< 
+            return new _Fun__9____(_self____);
+        >**>
+    }
+ @popCompilationContext(new1127) 
+@pushCompilationContextStatement(pp1126, pp) 
+
+    // Methods added by the compiler
+    override    func prototype -> Fun_9__ {
+        @javacode{* return prototypeFun_9__;
+        *}
+    } 
+ @popCompilationContext(pp1126) 
+end
+
+    object Fun_10__(Program self__)  extends Function<Nil>
+        override
+        func eval -> Any  { 
+            return 3
+        }
+
+      @pushCompilationContextStatement(new1129, new) 
+    // Methods added by the compiler
+
+    override    func clone -> Fun_10__ {
+        @javacode<<*
+        try {
+            return (_Fun__10____ ) this.clone(); 
+        } catch (CloneNotSupportedException e) { }
+        return null;
+        *>>    } 
+
+    func init: Program self__ {
+        @javacode{*
+        this._self____ = _self____;
+        *}
+    }
+
+    func new: Program self__ -> Fun_10__ {
+        @javacode<**< 
+            return new _Fun__10____(_self____);
+        >**>
+    }
+ @popCompilationContext(new1129) 
+@pushCompilationContextStatement(pp1128, pp) 
+
+    // Methods added by the compiler
+    override    func prototype -> Fun_10__ {
+        @javacode{* return prototypeFun_10__;
+        *}
+    } 
+ @popCompilationContext(pp1128) 
+end
+
+    object Fun_11__(Program self__)  extends Function<Nil>
+        override
+        func eval -> Any  { 
+            return 4
+        }
+
+      @pushCompilationContextStatement(new1131, new) 
+    // Methods added by the compiler
+
+    override    func clone -> Fun_11__ {
+        @javacode<<*
+        try {
+            return (_Fun__11____ ) this.clone(); 
+        } catch (CloneNotSupportedException e) { }
+        return null;
+        *>>    } 
+
+    func init: Program self__ {
+        @javacode{*
+        this._self____ = _self____;
+        *}
+    }
+
+    func new: Program self__ -> Fun_11__ {
+        @javacode<**< 
+            return new _Fun__11____(_self____);
+        >**>
+    }
+ @popCompilationContext(new1131) 
+@pushCompilationContextStatement(pp1130, pp) 
+
+    // Methods added by the compiler
+    override    func prototype -> Fun_11__ {
+        @javacode{* return prototypeFun_11__;
+        *}
+    } 
+ @popCompilationContext(pp1130) 
+end
+
+
+
+ @popCompilationContext(inner1107) 
+end
+
+
+
+

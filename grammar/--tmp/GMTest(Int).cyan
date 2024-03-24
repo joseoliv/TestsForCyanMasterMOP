@@ -1,0 +1,25 @@
+package grammar
+
+
+object GMTest<Int> 
+
+    func init  { all = Array<Int>()    } 
+
+    @grammarMethod{*
+        (add: (Int)* ) 
+        *}
+ 
+    @grammarMethod{*
+        (each: Int)+
+        *}
+ 
+    func addAll: (Array<Int> args)   { all addAll: args    } 
+
+    override func asString -> String  = all asString;
+
+    func getAll -> Array<Int>  = all;
+
+    private let Array<Int> all
+
+end
+

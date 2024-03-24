@@ -1,0 +1,17 @@
+package main
+
+
+object Store<int_100> 
+
+    func set: (Int elem)   {
+                if elem >         @extract("int_100")  {
+            throw: ExceptionStr("Number out of limits in Store prototype")
+        }        self.elem = elem
+    } 
+
+    func get -> Int  = elem;
+
+    private var Int elem = 0;
+
+end
+

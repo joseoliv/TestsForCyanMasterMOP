@@ -1,0 +1,22 @@
+package main
+
+@concept{*
+     main.ProtoT has [ 
+         func search: typeof(main.ProtoR get) -> typeof(main.ProtoT get: Int)
+         func at: Int -> typeof(main.ProtoR at: Int)     
+         func get: Int -> Double
+         ],
+     main.ProtoR has [ 
+        func get -> Program
+        func at: Int n -> typeof(main.ProtoT at: 0)
+     ],
+     cyan.lang.lessThan(main.ProtoT),
+     typeof(main.ProtoR at: Int) in [ Int, Long, typeof(Int asString) ]
+     
+*}
+ 
+object Strange<main.ProtoT, main.ProtoR> 
+
+
+end
+

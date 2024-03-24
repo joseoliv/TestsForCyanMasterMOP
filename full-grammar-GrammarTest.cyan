@@ -1,0 +1,783 @@
+package grammar
+
+
+object GrammarTest
+
+    /*
+    @grammarMethod{*
+        (add: Int)
+    *}
+    func m00: Int t -> Int { return t }
+    */
+
+    /*
+    @grammarMethod{*
+        (add: Int, String)
+    *}
+    func m0: Tuple<Int, String> t -> String { 
+        return t f1 ++ t f2;
+    }
+    */
+    
+    /* @grammarMethod{*
+        (add: (Int)*)
+    *}
+    func m1: Array<Int> t -> Int { 
+        var s = 0;
+        t foreach: Sum<Int>(s);
+        return s;
+    } */
+
+    @grammarMethod{*
+        (addInt: (Int)+)
+    *}
+    func m2: Array<Int> t -> Int { 
+        var s = 0;
+        t foreach: Sum<Int>(s);
+        return s;
+    }
+
+    @grammarMethod{*
+        ((add: Int)+)
+    *}
+    func m3: Array<Int> t -> Int { 
+        var s = 0;
+        t foreach: Sum<Int>(s);
+        return s;
+    }
+
+    /*@grammarMethod{*
+        (add: Int | String )
+    *}
+    func m4: Int | String t -> String { 
+        type t
+            case Int n {
+                return n asString
+            }
+            case String s {
+                return s
+            }
+    }*/
+
+    @grammarMethod{*
+        (add: (Int | String)+ toStr:)
+    *}
+    func m5:  Tuple<Array<Int|String>, Any> t -> String { 
+        var s = "";
+        for elem in t f1 {
+            type elem
+                case Int n {
+                    s = s ++ n asString
+                }
+                case String str {
+                    s = s ++ str
+                }
+        }
+        return s
+    
+    }  
+
+    @grammarMethod{*
+        (addu: Int | addu: String)
+    *}
+    func m6: Union<f1, Int, f2, String> t -> String { 
+        type t
+            case Int f1 {
+                return f1 asString
+            }
+            case String f2 {
+                return f2
+            }
+    }
+
+    @grammarMethod{*
+        (key: Int value: Long)
+    *}
+    func m7: Tuple<Int, Long> t -> Long { 
+        return t f1 asLong + t f2;
+    }
+
+    @grammarMethod{*
+        (nameList: (String)* (size: Int)?)
+    *}
+    func m8: Tuple<Array<String>, Union<some, Int, none, Any>> t 
+         -> String { 
+        var s = "";
+        for elem in t f1 { s = s ++ elem }
+        type t f2
+            case Int some { s = s ++ some }
+            case Any none { s = s ++ "none" }
+        return s
+    }
+
+    @grammarMethod{*
+        (coke:)
+    *}
+    func m9: Any t -> Int { return 0 }
+
+    @grammarMethod{*
+        (fanta: | guarana:)
+    *}
+    func m10: Union<f1, Any, f2, Any> t -> Int { 
+        type t 
+            case Any f1 { return 0 }
+            case Any f2 { return 1 }
+    }
+
+    @grammarMethod{*
+        ( add: (fanta: | guarana:)* )
+    *}
+    func m11: Tuple<Any, Array<Union<f1, Any, f2, Any>>> t -> Int { 
+        var s = 0;
+        for elem in t f2 {
+            type elem
+                case Any f1 { s = s + 1 }
+                case Any f2 { s = s + 10 }
+        }
+        return s
+    }
+
+    @grammarMethod{*
+        (add: (cocaCola: | tubaina:)+ )
+    *}
+    func m12: Tuple<Any, Array<Union<f1, Any, f2, Any>>> t -> Int { 
+        var s = 0;
+        for elem in t f2 {
+            type elem
+                case Any f1 { s = s + 1 }
+                case Any f2 { s = s + 10 }
+        }
+        return s
+    }
+
+    @grammarMethod{*
+        (add5: ( (coke2: | guarana2:)+ )? )
+    *}
+    func m13: Tuple<Any, Union<some, Array<Union<f1, Any, f2, Any>>, 
+                               none, Any>> t -> Int { 
+        var s = 0;
+        type t f2 
+            case Array<Union<f1, Any, f2, Any>> some {
+                for elem in some  {
+                    type elem 
+                        case Any f1 { s = s + 1 }
+                        case Any f2 { s = s + 10 }
+                }
+            }
+            case Any none {
+                s = s + 100;
+            }
+        return s
+    }
+
+    @grammarMethod{*
+        ( add7: ((coke: | guarana:)? )* )
+    *}
+    func m14: Tuple<Any, Array<Union<some, Union<f1, Any, f2, Any>, none, Any>>> t 
+         -> Int { 
+        var s = 0;
+        for aa in t f2 {
+            type aa
+                case Union<f1, Any, f2, Any> some {
+                    type some
+                        case Any f1 { s = s + 1 }
+                        case Any f2 { s = s + 10 }
+                }
+                case Any none {
+                    s = s + 100;
+                }
+        }
+        return s
+    }
+    
+    @grammarMethod{*
+        (amount: (gas: Int | alcohol: Int) )
+    *}
+    func m15: Tuple<Any, Union<f1, Int, f2, Int>> t -> Int { 
+        var s = 0;
+        type t f2 
+            case Int f1 { s = s + f1 }
+            case Int f2 { s = s + f2 + 10 }
+        return s
+    }
+
+    // Union(some, Union(f1, Any, f2, Any), none, Nil).
+    func test: Any any { }
+    func testInterA: InterA ia { }
+    func retAny: Any any -> Any {
+        type any
+            case InterB ib { return ib }
+            case InterA ia { return ia }
+            case Any aa { return aa }
+            
+    }
+
+    func retAny7: Any any -> Int {
+        var Int|Char|String ics = 0;
+        type ics
+            case Char ch { return 1 }
+            case Int n { return n }
+            case String s { return 2 }
+    }
+
+    
+    var InterA intA = A();
+    shared var Iterable<Int> iter = Array<Int>();
+    var Int justInt = Int;
+    let Int ljustInt = Int;
+    shared var Int sjustInt = Int;
+    shared let Int sljustInt = Int;
+    
+    func retAny2 -> Any = intA;
+
+    func run {
+        var GrammarTest .# writeCode gtest;
+        var Int|String isun;
+        
+
+          @pushCompilationContextStatement(atisemAn_id_466, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 238) 
+         if !(self m3:  [ 0 ]  == 0) {
+                  "Assert failed in line 238 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'self m3:  [ 0 ]  == 0'" println;
+                  };
+ @popCompilationContext(atisemAn_id_466) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_468, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 239) 
+         if !(self m5:  [.  [ ( Cast<cyan.lang.Int|cyan.lang.String> asReceiver: (0) ), ( Cast<cyan.lang.Int|cyan.lang.String> asReceiver: ("1") ) ] ,  Any .]  == "01") {
+                  "Assert failed in line 239 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'self m5:  [.  [ ( Cast<cyan.lang.Int|cyan.lang.String> asReceiver: (0) ), ( Cast<cyan.lang.Int|cyan.lang.String> asReceiver: (\"1\") ) ] ,  Any .]  == \"01\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_468) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_470, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 240) 
+         if !(self m2:  [ 1, 2, 3 ]  == 6) {
+                  "Assert failed in line 240 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'self m2:  [ 1, 2, 3 ]  == 6'" println;
+                  };
+ @popCompilationContext(atisemAn_id_470) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_472, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 241) 
+         if !(self m3:  [ 1, 2, 3 ]  == 6) {
+                  "Assert failed in line 241 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'self m3:  [ 1, 2, 3 ]  == 6'" println;
+                  };
+ @popCompilationContext(atisemAn_id_472) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_474, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 242) 
+         if !(self m5:  [.  [ ( Cast<cyan.lang.Int|cyan.lang.String> asReceiver: ("0") ) ] ,  Any .]  == "0") {
+                  "Assert failed in line 242 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'self m5:  [.  [ ( Cast<cyan.lang.Int|cyan.lang.String> asReceiver: (\"0\") ) ] ,  Any .]  == \"0\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_474) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_476, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 243) 
+         if !(self m5:  [.  [ ( Cast<cyan.lang.Int|cyan.lang.String> asReceiver: (0) ), ( Cast<cyan.lang.Int|cyan.lang.String> asReceiver: (1) ), ( Cast<cyan.lang.Int|cyan.lang.String> asReceiver: ("2") ), ( Cast<cyan.lang.Int|cyan.lang.String> asReceiver: ("3") ) ] ,  Any .]  == "0123") {
+                  "Assert failed in line 243 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'self m5:  [.  [ ( Cast<cyan.lang.Int|cyan.lang.String> asReceiver: (0) ), ( Cast<cyan.lang.Int|cyan.lang.String> asReceiver: (1) ), ( Cast<cyan.lang.Int|cyan.lang.String> asReceiver: (\"2\") ), ( Cast<cyan.lang.Int|cyan.lang.String> asReceiver: (\"3\") ) ] ,  Any .]  == \"0123\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_476) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_478, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 244) 
+         if !(self m6:  ( Union<f1, Int, f2, String>() f1: 0 )  == "0") {
+                  "Assert failed in line 244 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'self m6:  ( Union<f1, Int, f2, String>() f1: 0 )  == \"0\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_478) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_480, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 245) 
+         if !(self m6:  ( Union<f1, Int, f2, String>() f2: "0" )  == "0") {
+                  "Assert failed in line 245 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'self m6:  ( Union<f1, Int, f2, String>() f2: \"0\" )  == \"0\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_480) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_482, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 246) 
+         if !(self m7:  [. 5,  10L .]  == 15L) {
+                  "Assert failed in line 246 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'self m7:  [. 5,  10L .]  == 15L'" println;
+                  };
+ @popCompilationContext(atisemAn_id_482) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_484, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 247) 
+         if !(self m8:  [.  [ "0", "1", "2" ] ,  ( Union<some, Int, none, Any>() none: Any )  .]  == "012none") {
+                  "Assert failed in line 247 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'self m8:  [.  [ \"0\", \"1\", \"2\" ] ,  ( Union<some, Int, none, Any>() none: Any )  .]  == \"012none\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_484) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_486, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 248) 
+         if !(self m8:  [.  [ "0", "1", "2" ] ,  ( Union<some, Int, none, Any>() some:  345 )  .]  == "012345") {
+                  "Assert failed in line 248 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'self m8:  [.  [ \"0\", \"1\", \"2\" ] ,  ( Union<some, Int, none, Any>() some:  345 )  .]  == \"012345\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_486) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_488, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 249) 
+         if !(self m9: Any == 0) {
+                  "Assert failed in line 249 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'self m9: Any == 0'" println;
+                  };
+ @popCompilationContext(atisemAn_id_488) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_490, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 250) 
+         if !(self m10:  ( Union<f1, Any, f2, Any>() f1: Any )  == 0) {
+                  "Assert failed in line 250 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'self m10:  ( Union<f1, Any, f2, Any>() f1: Any )  == 0'" println;
+                  };
+ @popCompilationContext(atisemAn_id_490) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_492, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 251) 
+         if !(self m10:  ( Union<f1, Any, f2, Any>() f2: Any )  == 1) {
+                  "Assert failed in line 251 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'self m10:  ( Union<f1, Any, f2, Any>() f2: Any )  == 1'" println;
+                  };
+ @popCompilationContext(atisemAn_id_492) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_494, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 252) 
+         if !( m11:  [. Any,   [  ( Union<f1, Any, f2, Any>() f1: Any ) ,  ( Union<f1, Any, f2, Any>() f1: Any )  ]  .]  == 2) {
+                  "Assert failed in line 252 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: ' m11:  [. Any,   [  ( Union<f1, Any, f2, Any>() f1: Any ) ,  ( Union<f1, Any, f2, Any>() f1: Any )  ]  .]  == 2'" println;
+                  };
+ @popCompilationContext(atisemAn_id_494) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_496, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 253) 
+         if !( m11:  [. Any,   [  ( Union<f1, Any, f2, Any>() f1: Any ) ,  ( Union<f1, Any, f2, Any>() f2: Any ) ,  ( Union<f1, Any, f2, Any>() f1: Any )  ]  .]  == 12) {
+                  "Assert failed in line 253 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: ' m11:  [. Any,   [  ( Union<f1, Any, f2, Any>() f1: Any ) ,  ( Union<f1, Any, f2, Any>() f2: Any ) ,  ( Union<f1, Any, f2, Any>() f1: Any )  ]  .]  == 12'" println;
+                  };
+ @popCompilationContext(atisemAn_id_496) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_498, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 254) 
+         if !( m11:  [. Any,   [  ( Union<f1, Any, f2, Any>() f1: Any ) ,  ( Union<f1, Any, f2, Any>() f2: Any ) ,  ( Union<f1, Any, f2, Any>() f1: Any ) ,  ( Union<f1, Any, f2, Any>() f2: Any ) ,  ( Union<f1, Any, f2, Any>() f2: Any ) ,  ( Union<f1, Any, f2, Any>() f1: Any )  ]  .]  == 33) {
+                  "Assert failed in line 254 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: ' m11:  [. Any,   [  ( Union<f1, Any, f2, Any>() f1: Any ) ,  ( Union<f1, Any, f2, Any>() f2: Any ) ,  ( Union<f1, Any, f2, Any>() f1: Any ) ,  ( Union<f1, Any, f2, Any>() f2: Any ) ,  ( Union<f1, Any, f2, Any>() f2: Any ) ,  ( Union<f1, Any, f2, Any>() f1: Any )  ]  .]  == 33'" println;
+                  };
+ @popCompilationContext(atisemAn_id_498) 
+ 
+
+          @pushCompilationContextStatement(atisemAn_id_500, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 256) 
+         if !( m12:  [. Any,   [  ( Union<f1, Any, f2, Any>() f1: Any ) ,  ( Union<f1, Any, f2, Any>() f1: Any )  ]  .]  == 2) {
+                  "Assert failed in line 256 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: ' m12:  [. Any,   [  ( Union<f1, Any, f2, Any>() f1: Any ) ,  ( Union<f1, Any, f2, Any>() f1: Any )  ]  .]  == 2'" println;
+                  };
+ @popCompilationContext(atisemAn_id_500) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_502, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 257) 
+         if !( m12:  [. Any,   [  ( Union<f1, Any, f2, Any>() f1: Any ) ,  ( Union<f1, Any, f2, Any>() f2: Any ) ,  ( Union<f1, Any, f2, Any>() f1: Any )  ]  .]  == 12) {
+                  "Assert failed in line 257 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: ' m12:  [. Any,   [  ( Union<f1, Any, f2, Any>() f1: Any ) ,  ( Union<f1, Any, f2, Any>() f2: Any ) ,  ( Union<f1, Any, f2, Any>() f1: Any )  ]  .]  == 12'" println;
+                  };
+ @popCompilationContext(atisemAn_id_502) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_504, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 258) 
+         if !( m12:  [. Any,   [  ( Union<f1, Any, f2, Any>() f1: Any ) ,  ( Union<f1, Any, f2, Any>() f2: Any ) ,  ( Union<f1, Any, f2, Any>() f1: Any ) ,  ( Union<f1, Any, f2, Any>() f2: Any ) ,  ( Union<f1, Any, f2, Any>() f2: Any ) ,  ( Union<f1, Any, f2, Any>() f1: Any )  ]  .]  == 33) {
+                  "Assert failed in line 258 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: ' m12:  [. Any,   [  ( Union<f1, Any, f2, Any>() f1: Any ) ,  ( Union<f1, Any, f2, Any>() f2: Any ) ,  ( Union<f1, Any, f2, Any>() f1: Any ) ,  ( Union<f1, Any, f2, Any>() f2: Any ) ,  ( Union<f1, Any, f2, Any>() f2: Any ) ,  ( Union<f1, Any, f2, Any>() f1: Any )  ]  .]  == 33'" println;
+                  };
+ @popCompilationContext(atisemAn_id_504) 
+ 
+
+          @pushCompilationContextStatement(atisemAn_id_506, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 260) 
+         if !(self m13:  [. Any,  ( Union<some, Array<Union<f1, Any, f2, Any>>, none, Any>() none: Any )  .]  == 100) {
+                  "Assert failed in line 260 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'self m13:  [. Any,  ( Union<some, Array<Union<f1, Any, f2, Any>>, none, Any>() none: Any )  .]  == 100'" println;
+                  };
+ @popCompilationContext(atisemAn_id_506) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_508, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 261) 
+         if !(self m13:  [. Any,  ( Union<some, Array<Union<f1, Any, f2, Any>>, none, Any>() some:   [  ( Union<f1, Any, f2, Any>() f1: Any ) ,  ( Union<f1, Any, f2, Any>() f1: Any ) ,  ( Union<f1, Any, f2, Any>() f2: Any ) ,  ( Union<f1, Any, f2, Any>() f1: Any ) ,  ( Union<f1, Any, f2, Any>() f2: Any )  ]  )  .]  == 23) {
+                  "Assert failed in line 261 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'self m13:  [. Any,  ( Union<some, Array<Union<f1, Any, f2, Any>>, none, Any>() some:   [  ( Union<f1, Any, f2, Any>() f1: Any ) ,  ( Union<f1, Any, f2, Any>() f1: Any ) ,  ( Union<f1, Any, f2, Any>() f2: Any ) ,  ( Union<f1, Any, f2, Any>() f1: Any ) ,  ( Union<f1, Any, f2, Any>() f2: Any )  ]  )  .]  == 23'" println;
+                  };
+ @popCompilationContext(atisemAn_id_508) 
+ 
+
+          @pushCompilationContextStatement(atisemAn_id_510, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 263) 
+         if !(self m14:  [. Any,  Array<Union<some, Union<f1, Any, f2, Any>, none, Any>>()  .]  == 0) {
+                  "Assert failed in line 263 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'self m14:  [. Any,  Array<Union<some, Union<f1, Any, f2, Any>, none, Any>>()  .]  == 0'" println;
+                  };
+ @popCompilationContext(atisemAn_id_510) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_512, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 264) 
+         if !(self m14:  [. Any,   [  ( Union<some, Union<f1, Any, f2, Any>, none, Any>() some: (Union<f1, Any, f2, Any>() f1: Any) ) ,  ( Union<some, Union<f1, Any, f2, Any>, none, Any>() some: (Union<f1, Any, f2, Any>() f1: Any) )  ]  .]  == 2) {
+                  "Assert failed in line 264 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'self m14:  [. Any,   [  ( Union<some, Union<f1, Any, f2, Any>, none, Any>() some: (Union<f1, Any, f2, Any>() f1: Any) ) ,  ( Union<some, Union<f1, Any, f2, Any>, none, Any>() some: (Union<f1, Any, f2, Any>() f1: Any) )  ]  .]  == 2'" println;
+                  };
+ @popCompilationContext(atisemAn_id_512) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_514, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 265) 
+         if !(self m14:  [. Any,   [  ( Union<some, Union<f1, Any, f2, Any>, none, Any>() some: (Union<f1, Any, f2, Any>() f1: Any) ) ,  ( Union<some, Union<f1, Any, f2, Any>, none, Any>() some: (Union<f1, Any, f2, Any>() f2: Any) ) ,  ( Union<some, Union<f1, Any, f2, Any>, none, Any>() some: (Union<f1, Any, f2, Any>() f1: Any) ) ,  ( Union<some, Union<f1, Any, f2, Any>, none, Any>() some: (Union<f1, Any, f2, Any>() f2: Any) ) ,  ( Union<some, Union<f1, Any, f2, Any>, none, Any>() some: (Union<f1, Any, f2, Any>() f1: Any) )  ]  .]  == 23) {
+                  "Assert failed in line 265 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'self m14:  [. Any,   [  ( Union<some, Union<f1, Any, f2, Any>, none, Any>() some: (Union<f1, Any, f2, Any>() f1: Any) ) ,  ( Union<some, Union<f1, Any, f2, Any>, none, Any>() some: (Union<f1, Any, f2, Any>() f2: Any) ) ,  ( Union<some, Union<f1, Any, f2, Any>, none, Any>() some: (Union<f1, Any, f2, Any>() f1: Any) ) ,  ( Union<some, Union<f1, Any, f2, Any>, none, Any>() some: (Union<f1, Any, f2, Any>() f2: Any) ) ,  ( Union<some, Union<f1, Any, f2, Any>, none, Any>() some: (Union<f1, Any, f2, Any>() f1: Any) )  ]  .]  == 23'" println;
+                  };
+ @popCompilationContext(atisemAn_id_514) 
+ 
+
+//     func m14: Tuple<Any, Array<Union<some, Union<f1, Any, f2, Any>, none, Any>>> t 
+          @pushCompilationContextStatement(atisemAn_id_516, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 268) 
+         if !( m15:  [. Any,   ( Union<f1, Int, f2, Int>() f1: 11 )  .]  == 11) {
+                  "Assert failed in line 268 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: ' m15:  [. Any,   ( Union<f1, Int, f2, Int>() f1: 11 )  .]  == 11'" println;
+                  };
+ @popCompilationContext(atisemAn_id_516) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_518, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 269) 
+         if !( m15:  [. Any,   ( Union<f1, Int, f2, Int>() f2: 123 )  .]  == 133) {
+                  "Assert failed in line 269 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: ' m15:  [. Any,   ( Union<f1, Int, f2, Int>() f2: 123 )  .]  == 133'" println;
+                  };
+ @popCompilationContext(atisemAn_id_518) 
+      
+        
+        /*
+        0.prototypeName println;
+        let v = [ 0, 1, 2 ];
+        v.add: 3;
+        printexpr v.size;
+        */
+        
+    
+        let ArrayIS isArray = ArrayIS();
+        
+        // only Int and String values are inserted in the array
+         @markDeletedCode(5)   @pushCompilationContext(atisemAn_id_519, "grammarMethod", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\ArrayIS.cyan", 18) isArray addManyElem:  [  ( Union<f1, Int, f2, String, f3, Any>() f1: 0 ) ,  ( Union<f1, Int, f2, String, f3, Any>() f2: "zero" ) ,  ( Union<f1, Int, f2, String, f3, Any>() f3: Any ) ,  ( Union<f1, Int, f2, String, f3, Any>() f3: 0.0 ) ,  ( Union<f1, Int, f2, String, f3, Any>() f3: 'a' ) ,  ( Union<f1, Int, f2, String, f3, Any>() f1: 1 )  ]  @popCompilationContext(atisemAn_id_519, "cyan.lang", "Nil") 
+;
+          @pushCompilationContextStatement(atisemAn_id_520, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 288) 
+         if !(isArray getArray size == 3) {
+                  "Assert failed in line 288 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'isArray getArray size == 3'" println;
+                  };
+ @popCompilationContext(atisemAn_id_520) 
+ 
+        var s = "";
+        for elem in isArray getArray {
+            s = s ++ elem
+        }
+          @pushCompilationContextStatement(atisemAn_id_521, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 293) 
+         if !(s == "0zero1") {
+                  "Assert failed in line 293 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 's == \"0zero1\"'" println;
+                  "'s' = " print;
+                  s println;
+                  };
+ @popCompilationContext(atisemAn_id_521) 
+ 
+        
+        
+          @pushCompilationContext(atisemAn_id_522, "grammarMethod", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\ArrayIS.cyan", 7) isArray addMany:  [ ( Cast<cyan.lang.Int|cyan.lang.String> asReceiver: ("one") ), ( Cast<cyan.lang.Int|cyan.lang.String> asReceiver: (2) ), ( Cast<cyan.lang.Int|cyan.lang.String> asReceiver: ("two") ) ]  @popCompilationContext(atisemAn_id_522, "cyan.lang", "Nil") 
+;
+        s = "";
+        for elem in isArray getArray {
+            s = s ++ elem
+        }
+          @pushCompilationContextStatement(atisemAn_id_523, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 301) 
+         if !(s == "0zero1one2two") {
+                  "Assert failed in line 301 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 's == \"0zero1one2two\"'" println;
+                  "'s' = " print;
+                  s println;
+                  };
+ @popCompilationContext(atisemAn_id_523) 
+         
+        
+        let otherArray = Array<Int|String>();
+        otherArray add: 0;
+        otherArray add: "zero";
+        otherArray add: 1;
+        otherArray add: "one";
+        otherArray add: 2;
+        otherArray add: "two";
+          @pushCompilationContextStatement(atisemAn_id_524, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 310) 
+         if !(isArray getArray == otherArray) {
+                  "Assert failed in line 310 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'isArray getArray == otherArray'" println;
+                  };
+ @popCompilationContext(atisemAn_id_524) 
+ 
+        
+        let Int|String is99 = 0;
+          @pushCompilationContextStatement(atisemAn_id_525, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 313) 
+         if !(otherArray ==  [ is99, "zero", 1, "one", 2, "two" ] ) {
+                  "Assert failed in line 313 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'otherArray ==  [ is99, \"zero\", 1, \"one\", 2, \"two\" ] '" println;
+                  "'otherArray' = " print;
+                  otherArray println;
+                  };
+ @popCompilationContext(atisemAn_id_525) 
+ 
+
+    
+        let Person p = Person("Carolina", 7);
+          @pushCompilationContextStatement(atisemAn_id_526, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 317) 
+         if !(p getName == "Carolina") {
+                  "Assert failed in line 317 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'p getName == \"Carolina\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_526) 
+ 
+          @pushCompilationContext(atisemAn_id_527, "grammarMethod", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\Person.cyan", 7) p set:  [. "Carol",  ( Union<some, Int, none, Any>() none: Any )  .]  @popCompilationContext(atisemAn_id_527, "cyan.lang", "Nil") 
+;
+          @pushCompilationContextStatement(atisemAn_id_528, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 319) 
+         if !(p getName == "Carol") {
+                  "Assert failed in line 319 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'p getName == \"Carol\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_528) 
+ 
+        
+          @pushCompilationContext(atisemAn_id_529, "grammarMethod", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\Person.cyan", 7) p set:  [. "Carolina",  ( Union<some, Int, none, Any>() some:  7 )  .]  @popCompilationContext(atisemAn_id_529, "cyan.lang", "Nil") 
+;
+          @pushCompilationContextStatement(atisemAn_id_530, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 322) 
+         if !(p getName == "Carolina") {
+                  "Assert failed in line 322 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'p getName == \"Carolina\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_530) 
+ 
+        
+    
+        var MyFile myfile = MyFile();
+          @pushCompilationContextStatement(atisemAn_id_532, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 326) 
+         if !(myfile openReadWrite:  [. "AAAA",   ( Union<f1, Any, f2, Any>() f1: Any )  .]  == 0) {
+                  "Assert failed in line 326 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'myfile openReadWrite:  [. \"AAAA\",   ( Union<f1, Any, f2, Any>() f1: Any )  .]  == 0'" println;
+                  };
+ @popCompilationContext(atisemAn_id_532) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_534, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 327) 
+         if !(myfile openReadWrite:  [. "BBBB",   ( Union<f1, Any, f2, Any>() f2: Any )  .]  == 1) {
+                  "Assert failed in line 327 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'myfile openReadWrite:  [. \"BBBB\",   ( Union<f1, Any, f2, Any>() f2: Any )  .]  == 1'" println;
+                  };
+ @popCompilationContext(atisemAn_id_534) 
+ 
+    
+    
+        var EnergyStore store = EnergyStore new;
+          @pushCompilationContext(atisemAn_id_535, "grammarMethod", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\EnergyStore.cyan", 24) store addEnergyList:  [. Any,   [  ( Union<f1, Double, f2, Double, f3, Double>() f1: 5.0 )  ]  .]  @popCompilationContext(atisemAn_id_535, "cyan.lang", "Nil") 
+;
+          @pushCompilationContext(atisemAn_id_536, "grammarMethod", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\EnergyStore.cyan", 24) store addEnergyList:  [. Any,   [  ( Union<f1, Double, f2, Double, f3, Double>() f3: 10.0 )  ]  .]  @popCompilationContext(atisemAn_id_536, "cyan.lang", "Nil") 
+;
+          @pushCompilationContext(atisemAn_id_537, "grammarMethod", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\EnergyStore.cyan", 24) store addEnergyList:  [. Any,   [  ( Union<f1, Double, f2, Double, f3, Double>() f2: 3.0 )  ]  .]  @popCompilationContext(atisemAn_id_537, "cyan.lang", "Nil") 
+;
+          @pushCompilationContext(atisemAn_id_538, "grammarMethod", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\EnergyStore.cyan", 24) store addEnergyList:  [. Any,   [  ( Union<f1, Double, f2, Double, f3, Double>() f2: 3.0 ) ,  ( Union<f1, Double, f2, Double, f3, Double>() f3: 10.0 ) ,  ( Union<f1, Double, f2, Double, f3, Double>() f1: 4.0 ) ,  ( Union<f1, Double, f2, Double, f3, Double>() f1: 5.0 )  ]  .]  @popCompilationContext(atisemAn_id_538, "cyan.lang", "Nil") 
+;
+
+         @markDeletedCode(5)   @pushCompilationContext(atisemAn_id_539, "grammarMethod", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\EnergyStore.cyan", 24) EnergyStore addEnergyList:  [. Any,   [  ( Union<f1, Double, f2, Double, f3, Double>() f1: 100.0 ) ,  ( Union<f1, Double, f2, Double, f3, Double>() f2: 12000.0 ) ,  ( Union<f1, Double, f2, Double, f3, Double>() f1: 355.0 ) ,  ( Union<f1, Double, f2, Double, f3, Double>() f3: 3200.67 ) ,  ( Union<f1, Double, f2, Double, f3, Double>() f2: 8777.0 )  ]  .]  @popCompilationContext(atisemAn_id_539, "cyan.lang", "Nil") 
+;
+
+          @pushCompilationContextStatement(atisemAn_id_540, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 343) 
+         if !(store getAmount equal: 50445.1208) {
+                  "Assert failed in line 343 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'store getAmount equal: 50445.1208'" println;
+                  };
+ @popCompilationContext(atisemAn_id_540) 
+ 
+
+
+    
+          @pushCompilationContext(atisemAn_id_541, "grammarMethod", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\MyOddArray.cyan", 5) MyOddArray addAll:  [.  [ 0, 1, 2 ] ,  Array<Int>()  .]  @popCompilationContext(atisemAn_id_541, "cyan.lang", "Nil") 
+;
+          @pushCompilationContextStatement(atisemAn_id_542, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 348) 
+         if !((MyOddArray getAll)[0] == 0) {
+                  "Assert failed in line 348 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: '(MyOddArray getAll)[0] == 0'" println;
+                  };
+ @popCompilationContext(atisemAn_id_542) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_543, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 349) 
+         if !((MyOddArray getAll)[2] == 2) {
+                  "Assert failed in line 349 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: '(MyOddArray getAll)[2] == 2'" println;
+                  };
+ @popCompilationContext(atisemAn_id_543) 
+ 
+        
+        
+        var MyOddArray array = SubMyOddArray();
+          @pushCompilationContext(atisemAn_id_544, "grammarMethod", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\MyOddArray.cyan", 5) array addAll:  [.  [ 0, 1 ] ,  Array<Int>()  .]  @popCompilationContext(atisemAn_id_544, "cyan.lang", "Nil") 
+;
+          @pushCompilationContextStatement(atisemAn_id_545, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 354) 
+         if !(array getAll at: 0 == 1) {
+                  "Assert failed in line 354 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'array getAll at: 0 == 1'" println;
+                  };
+ @popCompilationContext(atisemAn_id_545) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_546, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 355) 
+         if !(array getAll at: 1 == 2) {
+                  "Assert failed in line 355 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'array getAll at: 1 == 2'" println;
+                  };
+ @popCompilationContext(atisemAn_id_546) 
+ 
+          @pushCompilationContextStatement(atisemAn_id_547, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 356) 
+         if !(array asString == "[ 1, 2 ]") {
+                  "Assert failed in line 356 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'array asString == \"[ 1, 2 ]\"'" println;
+                  };
+ @popCompilationContext(atisemAn_id_547) 
+ 
+        
+        
+        var Any any = 0;
+        
+    
+        var ma = MyArray();
+        var InterA aa = A();
+        var InterB bb = B();
+        ma[aa] = bb;
+          @pushCompilationContextStatement(atisemAn_id_548, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 366) 
+         if !(ma[aa] get == 0) {
+                  "Assert failed in line 366 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'ma[aa] get == 0'" println;
+                  };
+ @popCompilationContext(atisemAn_id_548) 
+ 
+
+        ma[any] = any;
+          @pushCompilationContextStatement(atisemAn_id_549, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 369) 
+         if !(ma[any] == InterA) {
+                  "Assert failed in line 369 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'ma[any] == InterA'" println;
+                  };
+ @popCompilationContext(atisemAn_id_549) 
+ 
+        
+        
+          @pushCompilationContextStatement(atisemAn_id_550, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 372) 
+         if !(self retAny2 isA: A) {
+                  "Assert failed in line 372 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'self retAny2 isA: A'" println;
+                  };
+ @popCompilationContext(atisemAn_id_550) 
+ 
+        
+          @pushCompilationContextStatement(atisemAn_id_551, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 374) 
+         if !(self retAny: aa == aa) {
+                  "Assert failed in line 374 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'self retAny: aa == aa'" println;
+                  };
+ @popCompilationContext(atisemAn_id_551) 
+ 
+        
+        
+        let IMap<String, String> am2 = [ "one" -> "um" ];
+        any = am2;
+        //self test: am2;
+        var InterB ib = InterB;
+        self testInterA: ib;
+        //("" ++ am) println;
+        
+    
+        let car = Car();
+        var ok =  @markDeletedCode(2)   @pushCompilationContext(atisemAn_id_552, "grammarMethod", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\Car.cyan", 4) car carPlay:  [. Any,   [  ( Union<f1, Any, f2, Any, f3, Any, f4, Any, f5, Int>() f1: Any ) ,  ( Union<f1, Any, f2, Any, f3, Any, f4, Any, f5, Int>() f5: 100 ) ,  ( Union<f1, Any, f2, Any, f3, Any, f4, Any, f5, Int>() f3: Any ) ,  ( Union<f1, Any, f2, Any, f3, Any, f4, Any, f5, Int>() f5: 50 ) ,  ( Union<f1, Any, f2, Any, f3, Any, f4, Any, f5, Int>() f4: Any ) ,  ( Union<f1, Any, f2, Any, f3, Any, f4, Any, f5, Int>() f4: Any ) ,  ( Union<f1, Any, f2, Any, f3, Any, f4, Any, f5, Int>() f5: 200 ) ,  ( Union<f1, Any, f2, Any, f3, Any, f4, Any, f5, Int>() f2: Any )  ]  .]  @popCompilationContext(atisemAn_id_552, "cyan.lang", "String") 
+  == 
+            "car on car move(100) car left car move(50) car right car right car move(200) car off ";
+            
+          @pushCompilationContextStatement(atisemAn_id_553, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 391) 
+         if !(ok) {
+                  "Assert failed in line 391 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'ok'" println;
+                  };
+ @popCompilationContext(atisemAn_id_553) 
+ 
+        
+          @pushCompilationContext(atisemAn_id_554, "grammarMethod", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\Car.cyan", 4) car carPlay:  [. Any,   [  ( Union<f1, Any, f2, Any, f3, Any, f4, Any, f5, Int>() f1: Any )  ]  .]  @popCompilationContext(atisemAn_id_554, "cyan.lang", "String") 
+;
+          @pushCompilationContext(atisemAn_id_555, "grammarMethod", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\Car.cyan", 4) car carPlay:  [. Any,   [  ( Union<f1, Any, f2, Any, f3, Any, f4, Any, f5, Int>() f1: Any ) ,  ( Union<f1, Any, f2, Any, f3, Any, f4, Any, f5, Int>() f2: Any )  ]  .]  @popCompilationContext(atisemAn_id_555, "cyan.lang", "String") 
+;
+          @pushCompilationContext(atisemAn_id_556, "grammarMethod", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\Car.cyan", 4) car carPlay:  [. Any,   [  ( Union<f1, Any, f2, Any, f3, Any, f4, Any, f5, Int>() f1: Any ) ,  ( Union<f1, Any, f2, Any, f3, Any, f4, Any, f5, Int>() f5: 50 ) ,  ( Union<f1, Any, f2, Any, f3, Any, f4, Any, f5, Int>() f3: Any ) ,  ( Union<f1, Any, f2, Any, f3, Any, f4, Any, f5, Int>() f5: 20 ) ,  ( Union<f1, Any, f2, Any, f3, Any, f4, Any, f5, Int>() f4: Any ) ,  ( Union<f1, Any, f2, Any, f3, Any, f4, Any, f5, Int>() f2: Any )  ]  .]  @popCompilationContext(atisemAn_id_556, "cyan.lang", "String") 
+;
+        
+    
+        // var Car .# writeCode gt;
+        
+        let GMTest<Int> ti = GMTest<Int>();
+        
+          @pushCompilationContext(atisemAn_id_557, "grammarMethod", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\--tmp\GMTest(Int).cyan", 8) ti addAll: Array<cyan.lang.Int>() @popCompilationContext(atisemAn_id_557, "cyan.lang", "Nil") 
+;
+          @pushCompilationContextStatement(atisemAn_id_558, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 403) 
+         if !(ti getAll == Array<Int>()) {
+                  "Assert failed in line 403 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'ti getAll == Array<Int>()'" println;
+                  };
+ @popCompilationContext(atisemAn_id_558) 
+ 
+          @pushCompilationContext(atisemAn_id_559, "grammarMethod", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\--tmp\GMTest(Int).cyan", 8) ti addAll:  [ 0, 1, 2, 3 ]  @popCompilationContext(atisemAn_id_559, "cyan.lang", "Nil") 
+;
+          @pushCompilationContextStatement(atisemAn_id_560, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 405) 
+         if !(ti getAll ==  [ 0, 1, 2, 3 ] ) {
+                  "Assert failed in line 405 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'ti getAll ==  [ 0, 1, 2, 3 ] '" println;
+                  };
+ @popCompilationContext(atisemAn_id_560) 
+ 
+        // ti println;
+          @pushCompilationContext(atisemAn_id_561, "grammarMethod", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\--tmp\GMTest(Int).cyan", 12) ti addAll:  [ 4, 5, 6 ]  @popCompilationContext(atisemAn_id_561, "cyan.lang", "Nil") 
+;
+          @pushCompilationContextStatement(atisemAn_id_562, "macro(assert)", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\GrammarTest.cyan", 408) 
+         if !(ti getAll ==  [ 0, 1, 2, 3, 4, 5, 6 ] ) {
+                  "Assert failed in line 408 of prototype 'grammar.GrammarTest'" println;
+                  "Assert expression: 'ti getAll ==  [ 0, 1, 2, 3, 4, 5, 6 ] '" println;
+                  };
+ @popCompilationContext(atisemAn_id_562) 
+ 
+        //printexpr ti getAll;
+        
+        let StringHashTable sht = StringHashTable();
+         @markDeletedCode(2)   @pushCompilationContext(atisemAn_id_563, "grammarMethod", grammar, "C:\Dropbox\Cyan\cyanTests\masterMOP\grammar\StringHashTable.cyan", 6) sht multKeyValue:  [  [. "one",  "um" .] ,  [. "two",  "dois" .] ,  [. "three",  "tres" .]  ]  @popCompilationContext(atisemAn_id_563, "cyan.lang", "Nil") 
+;
+            
+        //assert sht getMap == [ "one" -> "um", "two" -> "dois", "three" -> "tres" ];
+        //printexpr sht getMap;
+        
+    }
+    
+    
+    
+   
+ @pushCompilationContextStatement(pp42, pp) 
+
+    // Methods added by the compiler
+    override    func prototype -> GrammarTest {
+        @javacode{* return prototype;
+        *}
+    } 
+ @popCompilationContext(pp42) 
+ @pushCompilationContextStatement(new163, new) 
+    // Methods added by the compiler
+
+    override    func clone -> GrammarTest {
+        @javacode<<*
+        try {
+            return (_GrammarTest ) this.clone(); 
+        } catch (CloneNotSupportedException e) { }
+        return null;
+        *>>    } 
+    func init { } 
+
+    func new -> GrammarTest {
+        @javacode<**< 
+            return new _GrammarTest();        >**>
+    }
+ @popCompilationContext(new163) 
+ @pushCompilationContext(inner1172, inner) 
+    override
+    func getFeatureListNameDoesNotCollide__ -> Array<Tuple<key, String, value, Any>> {
+        return Array<Tuple<key, String, value, Any>> new;
+    }
+    override
+    func getAnnotListNameDoesNotCollide__ -> Array<Any> {
+        return Array<Any> new;
+    }
+
+    override
+    func getSlotFeatureListNameDoesNotCollide__ -> Array<Tuple<slotName, String, key, String, value, Any>> {
+        let slotFeatureList_name_does_not_collide__ = Array<Tuple<slotName, String, key, String, value, Any>> new;
+        return slotFeatureList_name_does_not_collide__;
+    }
+ @popCompilationContext(inner1172) 
+ @pushCompilationContext(inner1173, inner)  @popCompilationContext(inner1173) 
+end

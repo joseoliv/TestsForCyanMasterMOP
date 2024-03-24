@@ -1,2 +1,2 @@
 @echo off
-"C:\Program Files\Java\jdk1.8.0_291\bin\java" -cp "C:\Dropbox\Cyan\lib\cyan.util.jar";"C:\Dropbox\Cyan\lib\cyan.io.jar";"C:\Dropbox\Cyan\lib\cyan.lang.jar";"C:\Dropbox\Cyan\lib";"C:\Dropbox\Cyan\cyanTests\java-for-masterMOP";"C:\Dropbox\Cyan\lib\cyanruntime.jar"  main.P
+"C:\Program Files\Java\jdk1.8.0_202\bin\java" -cp "C:\Dropbox\Cyan\lib\cyan.util.jar";"C:\Dropbox\Cyan\lib\cyan.io.jar";"C:\Dropbox\Cyan\lib\cyan.lang.jar";"C:\Dropbox\Cyan\lib";"C:\Dropbox\Cyan\cyanTests\java-for-masterMOP";"C:\Dropbox\Cyan\lib\cyanruntime.jar"  main.P

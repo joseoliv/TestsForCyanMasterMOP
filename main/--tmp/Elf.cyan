@@ -1,0 +1,5 @@
+package main
+object Elf
+    func get -> String { return "Elf !" }
+
+end

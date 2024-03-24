@@ -1,0 +1,7 @@
+package grammar
+
+
+
+object Proto_InterA__ implements InterA
+
+end
